@@ -1,0 +1,163 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+  
+  
+}
+
+
+.title {
+  color: coral;
+}
+
+
+.signup-container {
+  width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin: 70px auto; /* 위아래 여백을 조절하여 화면 중앙에 위치하도록 조정 */
+  padding: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  /* align-items: center; */
+  
+}
+
+.signup-container h4 {
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-align: center; /* 제목을 가운데 정렬 */
+}
+
+
+
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+
+/* .form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type=tel] {
+  width: calc(100% - 22px); 
+  padding: 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px; 
+  
+} */
+
+.form-group input,
+.form-group select,
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.email-container {
+  display: flex;
+  align-items: center;
+}
+
+.email-container input {
+  width: auto;
+  flex: 2;
+}
+
+.email-container select {
+  flex: 1;
+}
+
+.email-container span {
+  margin: 0 5px;
+}
+
+
+
+
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.ok-message {
+  color: blue;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+
+button[type="submit"] {
+  
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.link {
+  text-align: right;
+}
+
+.link a {
+  color: #007bff;
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.link a:hover {
+  text-decoration: underline;
+}
+
+
+/* input안에 주소 검색버튼 삽입 */
+/* .address {
+  display: flex;
+  align-items: center;
+}
+
+.address input {
+  flex: 1;
+  padding-right: 90px; 
+}
+
+.address .address_daum {
+  position: absolute;
+  right: 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 0 5px 5px 0;
+  background-color: #f8f9fa;
+  cursor: pointer;
+}
+
+.address-wrapper {
+  position: relative;
+  width: 100%;
+} */
+
+
+

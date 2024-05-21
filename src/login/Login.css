@@ -1,0 +1,82 @@
+/* login.css */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.title {
+  color: coral;
+}
+
+.border-container {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.userid,
+.password {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.login-btn:hover {
+  background-color: #0056b3;
+}
+
+.id-login-signup-link {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.kakao-login-btn,
+.naver-login-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.kakao-login-btn {
+  background-color: #ffeb00;
+  color: #3c1e1e; /* Kakao login button text color */
+}
+
+.kakao-login-btn:hover {
+  background-color: #e5c700;
+}
+
+.naver-login-btn {
+  background-color: #1ec800;
+  color: white;
+}
+
+.naver-login-btn:hover {
+  background-color: #17a600;
+}
+
