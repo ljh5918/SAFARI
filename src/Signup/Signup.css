@@ -132,30 +132,19 @@ button[type="submit"]:hover {
 
 
 /* input안에 주소 검색버튼 삽입 */
-/* .address {
-  display: flex;
-  align-items: center;
-}
-
-.address input {
-  flex: 1;
-  padding-right: 90px; 
-}
-
-.address .address_daum {
-  position: absolute;
-  right: 0;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 0 5px 5px 0;
-  background-color: #f8f9fa;
-  cursor: pointer;
-}
-
-.address-wrapper {
+.address {
   position: relative;
-  width: 100%;
-} */
+}
+.address button {
+  position: absolute;
+  width: 100px;
+  height: 40x;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto 0;
+  border-radius: 3px;
+}
 
 
 
