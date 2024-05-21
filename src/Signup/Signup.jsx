@@ -138,17 +138,17 @@ const selectAddress = (data) => {
           value={formData.name}
           onChange={handleChange}
           required
-          placeholder='이름/성별'/>
+          placeholder='이름'/>
 
 
-         <input
+         {/* <input
          type="text"
          name='birthday'
          value={formData.birthday}
          onChange={handleChange}
          required
          placeholder='생년월일 예)19990101'
-          />
+          /> */}
 
         <input 
         type="tel"

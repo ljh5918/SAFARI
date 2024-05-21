@@ -14,11 +14,11 @@
 
 
 .signup-container {
-  width: 1000px;
+  width: 800px;
   display: flex;
   flex-direction: column;
   margin: 70px auto; /* 위아래 여백을 조절하여 화면 중앙에 위치하도록 조정 */
-  padding: 200px;
+  padding: 80px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
@@ -85,8 +85,6 @@
 
 
 
-
-
 .error-message {
   color: red;
   font-size: 14px;
@@ -99,13 +97,12 @@
 }
 
 
-
 button[type="submit"] {
   
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: coral;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -116,6 +113,7 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #0056b3;
+  transition : 0.7s;
 }
 
 .link {

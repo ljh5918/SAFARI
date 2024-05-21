@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import kakaoimg from "../images/Kakao.png"
-
+//import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/css/bootstrap.css';
+import kakaoimg from "../images/Kakao.png"
 import {Button,Form, Container,Row,Col} from 'react-bootstrap';
 //import styles from '../css/Login.module.css';
 import '../login/Login.css';
