@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.css';
 import kakaoimg from "../images/Kakao.png"
 import {Button,Form, Container,Row,Col} from 'react-bootstrap';
-//import styles from '../css/Login.module.css';
-import '../login/Login.css';
+import styles from '../login/Login.module.css';
+//import '../login/Login.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,8 +21,6 @@ const Login = () => {
   const goTosignup = () => {
     navigate("/signup");
   }
-
-
 
 
 
@@ -65,7 +63,7 @@ const Login = () => {
     
     
     <div className="login-container">
-       <h1 className='title'>SAFARI</h1>
+       <h1 className={styles.title}>SAFARI</h1>
        <div className="border-container">
       <form className = 'loginForm'onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
      
