@@ -73,7 +73,8 @@ const Login = () => {
             onChange={handleChange}
             required placeholder='비밀번호'
           />
-          <Button className={styles.loginbtn} type='submit' onClick={goTomain}>로그인</Button>
+          <button className={styles.loginbtn} type='submit' onClick={goTomain}>로그인</button>
+          {/* <Button className={styles.loginbtn} type='submit' onClick={goTomain}>로그인</Button> */}
         </form>
         <div className={styles.signuplink}>
           <a href="#" onClick={goTosignup}>회원가입</a>
