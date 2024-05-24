@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DaumPostcode from "react-daum-postcode"; //주소 입력 api
 import { useNavigate } from "react-router-dom";
-// import styles from "../Signup/Signup.module.css";
+import styles from "../Signup/Signup.module.css";
 // import './Signup.css';
 
 
@@ -97,13 +97,13 @@ const selectAddress = (data) => {
   };
 
   return (
-    <div className='main-container'>
-    <h1 className='title'>SAFARI</h1>
-    <div className="signup-container">
+    <div className={styles.maincontainer}>
+    <h1 className={styles.title}>SAFARI</h1>
+    <div className={styles.signupcontainer}>
       <h4>회원정보</h4>
       
       <form className ='abc'onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className={styles.formgroup}>
           <input
             type="text"
             name="id"
@@ -120,7 +120,7 @@ const selectAddress = (data) => {
             required
             placeholder="비밀번호 (10자리 이상)"
           />
-          {passwordError && <p className="error-message">{passwordError}</p>}
+          {passwordError && <p className={styles.errormessage}>{passwordError}</p>}
         
           <input
             type="password"
@@ -130,7 +130,7 @@ const selectAddress = (data) => {
             required
             placeholder="비밀번호 확인"
           />
-          {confirmPasswordError && <p className="error-message">{confirmPasswordError}</p>}
+          {confirmPasswordError && <p className={styles.errormessage}>{confirmPasswordError}</p>}
 
           <input 
           type="text"
@@ -159,7 +159,7 @@ const selectAddress = (data) => {
         placeholder='휴대전화 번호 (-)없이 입력하시오'
          />
          
-        <div className='email-container'> 
+        <div className={styles.emailcontainer}> 
         <input 
         type="text"
         maxLength='30'
@@ -170,7 +170,7 @@ const selectAddress = (data) => {
         placeholder='이메일 입력'
         />
         <span>@</span>
-        <select name="email-select" onChange={handleChange}>
+        <select className='' onChange={handleChange}>
           <option value="write">직접 입력</option>
           <option value="naver.com">naver.com</option>
           <option value="google.com">google.com</option>   
@@ -187,7 +187,7 @@ const selectAddress = (data) => {
             3. 필요한 event handler
         */}
         
-        <div className='address'>
+        <div className={styles.address}>
         <input
           type='text'
           value={detailaddress}/>
@@ -209,7 +209,7 @@ const selectAddress = (data) => {
             {/* <td className="title" placeholder='상세 주소'></td> */}
 
             
-              
+             
                 
             <input
              type='text'
