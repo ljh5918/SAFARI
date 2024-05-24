@@ -1,36 +1,58 @@
 /* login.css */
-.login-container {
+.container {
+  width: auto;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  height: 100vh; /* 화면의 전체 높이를 사용하여 세로로 중앙 정렬 */
+  margin: 0 ;
+  /* padding: 0; */
+  
+  
 }
 
-.title {
-  color: coral;
-}
+.logincontainer {
+  
+   width: 700px;
 
-.border-container {
-  width: 400px;
-  padding: 20px;
+  padding: 20px; 
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
+
+.title {
+  
+  text-align: center; 
+  font-size:40px;
+  color: coral;
+  margin-top: 50px;
+  /* padding: 14px 24px 40px 0; */
+  margin-bottom: 50px;
+  
 }
+
+.loginform {
+   display: flex;
+  flex-direction: column;
+}
+
+
 
 .userid,
-.password {
+.userpw {
   width: 100%;
+  height: 60px;
+  padding: 100px; /* 내부 여백 추가 */
   margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px; /* 텍스트 크기 증가 */
 }
 
-.login-btn {
+.loginbtn {
   width: 100%;
   padding: 10px;
   background-color: #007bff;
@@ -42,41 +64,50 @@
   margin-top: 10px;
 }
 
-.login-btn:hover {
+.loginbtn:hover {
   background-color: #0056b3;
 }
 
-.id-login-signup-link {
-  text-align: center;
-  margin-top: 10px;
+.signuplink {
+  font-size: 16px;
+  text-align: right;
+  margin-top: 10px; /* 회원가입 링크와 상단 간격 조정 */
+  margin-bottom: 20px; /* 회원가입 링크와 하단 간격 조정 */
 }
 
-.kakao-login-btn,
-.naver-login-btn {
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
+.snstitle {
+  text-align: center;
+  color: rgb(122, 127, 134);
+  font-size: 15px;
+  margin-top: 100px; /* 소셜 로그인 타이틀과 상단 간격 조정 */
+}
+
+
+.kakaologinbtn,
+.naverloginbtn {
+  margin: 5px auto;
+  display: block;
+  width: 35%;
+  padding: 0px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
-.kakao-login-btn {
-  background-color: #ffeb00;
-  color: #3c1e1e; /* Kakao login button text color */
+.kakaologinbtn img,
+.naverloginbtn img {
+  width: 100%;
+  height: 50px;
 }
 
-.kakao-login-btn:hover {
+
+.kakaologinbtn:hover {
   background-color: #e5c700;
 }
 
-.naver-login-btn {
-  background-color: #1ec800;
-  color: white;
-}
 
-.naver-login-btn:hover {
+.naverloginbtn:hover {
   background-color: #17a600;
 }
 
