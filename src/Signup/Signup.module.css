@@ -7,9 +7,9 @@
   
 }
 
-
 .title {
   color: coral;
+  font-weight: bold;
 }
 
 
@@ -96,9 +96,8 @@
   margin-top: 5px;
 }
 
-/* 이 버튼 스타일을 변경하면 모든페이지 button의 submit type 의 스타일이 바뀜 */
-button[type="submit"] {
-  /* 회원가입 버튼 스타일을 바꾸면 왜 로그인 페이지의 로그인 버튼까지 중첩되어 스타일이 바뀌는지?  */
+
+.signupbtn {
   width: 100%;
   padding: 12px;
   font-size: 16px;
@@ -110,11 +109,12 @@ button[type="submit"] {
   transition: background-color 0.3s;
 }
 
-
-button[type="submit"]:hover {
-  background-color: #0056b3;
+.signupbtn:hover {
+  background-color: #e1600f;
   transition : 0.7s;
 }
+
+
 
 .link {
   text-align: right;

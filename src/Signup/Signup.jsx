@@ -231,7 +231,7 @@ const selectAddress = (data) => {
           <button type='button' onClick={handleCheckNickname}>닉네임 중복 확인</button>
           <p className='' style={{color : nicknameAvailabilityColor}}>{nicknameAvailabilityMessage}</p>
         </div>
-        <button type="submit" disabled={!isLoginEnabled}>가입하기</button>
+        <button className={styles.signupbtn}type="submit" disabled={!isLoginEnabled}>가입하기</button>
       </form>
     </div>
     </div>

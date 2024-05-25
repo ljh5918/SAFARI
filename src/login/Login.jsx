@@ -53,8 +53,10 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <h1 className={styles.title}>SAFARI</h1>
       <div className={styles.logincontainer}>
-        <h1 className={styles.title}>SAFARI</h1>
+        <h3 className={styles.logintitle}>로그인</h3>
+        <h6 className={styles.logintitleex}>시리얼 넘버를 통한 안전한 중고거래</h6>
         <form className={styles.loginform} onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
           <Form.Control
             type="text"
@@ -79,8 +81,8 @@ const Login = () => {
         <div className={styles.signuplink}>
           <a href="#" onClick={goTosignup}>회원가입</a>
         </div>
-        <p className={styles.snstitle}>-------------------------------------   소셜 로그인   -------------------------------------</p>
-        <div className={styles.snsbuttons}>
+        <p className={styles.snstitle}>------------------------------------   소셜 로그인   ------------------------------------</p>
+        <div className={styles.snsbtn}>
           <button className={styles.kakaologinbtn} type='button' onClick={KakaoLogin}>
             <img src={kakaoimg} alt="카카오로그인" />
           </button>

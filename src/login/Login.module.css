@@ -1,45 +1,41 @@
-/* login.css */
 .container {
-  width: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh; /* 화면의 전체 높이를 사용하여 세로로 중앙 정렬 */
-  margin: 0 ;
-  /* padding: 0; */
-  
-  
+  margin-top: 100px;
+}
+.title {
+  color: coral;
+  font-weight: bold;
 }
 
 .logincontainer {
-  
-   width: 700px;
-
-  padding: 20px; 
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto; /* 위아래 여백을 조절하여 화면 중앙에 위치하도록 조정 */
+  padding: 80px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
- 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 추가 */
+  /* align-items: center; */
 }
 
-
-.title {
-  
-  text-align: center; 
-  font-size:40px;
-  color: coral;
-  margin-top: 50px;
-  /* padding: 14px 24px 40px 0; */
-  margin-bottom: 50px;
-  
+.logintitle {
+  /* text-align: center; */
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.logintitleex {
+  color: rgb(122, 127, 134);
+  margin-bottom: 20px;
 }
 
 .loginform {
-   display: flex;
+  display: flex;
   flex-direction: column;
 }
-
-
 
 .userid,
 .userpw {
@@ -55,7 +51,7 @@
 .loginbtn {
   width: 100%;
   padding: 15px;
-  background-color: #007bff;
+  background-color: coral;
   color: white;
   border: none;
   border-radius: 5px;
@@ -65,28 +61,32 @@
 }
 
 .loginbtn:hover {
-  background-color: #0056b3;
+  background-color: #e1600f;
 }
 
 .signuplink {
   font-size: 16px;
   text-align: right;
   margin-top: 10px; /* 회원가입 링크와 상단 간격 조정 */
-  margin-bottom: 20px; /* 회원가입 링크와 하단 간격 조정 */
+  margin-bottom: 10px; /* 회원가입 링크와 하단 간격 조정 */
 }
 
 .snstitle {
   text-align: center;
   color: rgb(122, 127, 134);
   font-size: 15px;
-  margin-top: 100px; /* 소셜 로그인 타이틀과 상단 간격 조정 */
+  margin-top: 50px; /* 소셜 로그인 타이틀과 상단 간격 조정 */
 }
 
+.snsbtn {
+  display: flex;
+  justify-content: center;
+}
 
 .kakaologinbtn,
 .naverloginbtn {
-  margin: 5px auto;
-  display: block;
+  margin: 5px;
+  display: inline-block;
   width: 35%;
   padding: 0px;
   border: none;
@@ -106,8 +106,6 @@
   background-color: #e5c700;
 }
 
-
 .naverloginbtn:hover {
   background-color: #17a600;
 }
-
