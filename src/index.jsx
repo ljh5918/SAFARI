@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Main from './Main/Main';
-import SignUp from './Signup/Signup';
-import Login from './login/Login';
-import SearchAddress from './components/Postcode'
+import Main from './pages/Main';
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import Mypage from './pages/Mypage';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 

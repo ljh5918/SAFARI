@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import kakaoimg from "../images/kakaologin.png";
 import naverimg from "../images/naverlogin.png";
 import {Button,Form, Container,Row,Col} from 'react-bootstrap';
-import styles from '../login/Login.module.css';
+import styles from '../styles/Login.module.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
