@@ -51,7 +51,7 @@
 .loginbtn {
   width: 100%;
   padding: 15px;
-  background-color: coral;
+  background-color: #ff5757;
   color: white;
   border: none;
   border-radius: 5px;
@@ -61,7 +61,7 @@
 }
 
 .loginbtn:hover {
-  background-color: #e1600f;
+  background-color: #fc3f3f;
 }
 
 .signuplink {

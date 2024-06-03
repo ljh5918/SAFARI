@@ -101,7 +101,7 @@
   width: 100%;
   padding: 12px;
   font-size: 16px;
-  background-color: coral;
+  background-color: #ff5757;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -110,7 +110,7 @@
 }
 
 .signupbtn:hover {
-  background-color: #e1600f;
+  background-color: #fc3f3f;
   transition : 0.7s;
 }
 

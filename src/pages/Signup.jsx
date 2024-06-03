@@ -96,7 +96,7 @@ const selectAddress = (data) => {
 
   return (
     <div className={styles.maincontainer}>
-    <h1 className={styles.title}>SAFARI</h1>
+    {/* <h1 className={styles.title}>SAFARI</h1> */}
     <div className={styles.signupcontainer}>
       <h4>회원정보</h4>
       

@@ -37,6 +37,7 @@ function App() {
 
 
     // <Provider store={store}>
+  
       <Router>
         <Header />
         <Routes>
@@ -55,7 +56,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    // </Provider>
+    //  </Provider>
+ 
   );
 }
 
