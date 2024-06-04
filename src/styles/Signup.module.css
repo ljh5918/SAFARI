@@ -7,10 +7,10 @@
   
 }
 
-.title {
+/* .title {
   color: coral;
   font-weight: bold;
-}
+} */
 
 
 .signupcontainer {
@@ -116,19 +116,19 @@
 
 
 
-.link {
+/* .link {
   text-align: right;
-}
+} */
 
-.link a {
+/* .link a {
   color: #007bff;
   text-decoration: none;
   margin-right: 10px;
-}
+} */
 
-.link a:hover {
+/* .link a:hover {
   text-decoration: underline;
-}
+} */
 
 
 /* input안에 주소 검색버튼 삽입 */

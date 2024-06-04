@@ -190,7 +190,7 @@ const selectAddress = (data) => {
           type='text'
           value={detailaddress}/>
         <button  
-          // className="address_daum"
+          // className={address_daum}
           onClick={SelectAddressbtn}
           value={address}>주소 검색</button>
         </div>
@@ -217,7 +217,7 @@ const selectAddress = (data) => {
             />
            
 
-
+          
           <input
             type="text"
             name="nickname"
@@ -227,6 +227,7 @@ const selectAddress = (data) => {
             placeholder="닉네임"
           />
           <button type='button' onClick={handleCheckNickname}>닉네임 중복 확인</button>
+         
           <p className='' style={{color : nicknameAvailabilityColor}}>{nicknameAvailabilityMessage}</p>
         </div>
         <button className={styles.signupbtn}type="submit" disabled={!isLoginEnabled}>가입하기</button>
