@@ -1,9 +1,9 @@
 
-import Main from './pages/Main';
+
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Sell from "./pages/sell";
-import Mypage from './pages/Mypage';
+
 // import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.css';

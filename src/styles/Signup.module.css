@@ -118,15 +118,15 @@
 
 /* .link {
   text-align: right;
-} */
+}
 
-/* .link a {
+.link a {
   color: #007bff;
   text-decoration: none;
   margin-right: 10px;
-} */
+}
 
-/* .link a:hover {
+.link a:hover {
   text-decoration: underline;
 } */
 
@@ -134,11 +134,12 @@
 /* input안에 주소 검색버튼 삽입 */
 .address {
   position: relative;
+  
 }
 .address button {
   position: absolute;
   width: 100px;
-  height: 40x;
+  height: 45px;
   top: 0;
   bottom: 0;
   right: 0;

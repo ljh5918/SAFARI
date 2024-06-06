@@ -1,5 +1,5 @@
 .container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 50px auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -10,12 +10,32 @@
 h2 {
   text-align: center;
   color: #333;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
-form div {
-  margin-bottom: 50px;
+.hr1 {
+  border: 0;
+  height: 3px;
+  background: #ff5757;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
+
+.hr2 {
+  /* border:1px dashed #ff5757; */
+  border: 2px;
+  height: 2px;
+  background: #ff5757;
+  margin-top: 100px;
+  margin-bottom: 70px;
+}
+
+
+
+form div {
+  margin-bottom: 40px;
+} 
+
 
 label {
   display: block;
@@ -36,7 +56,7 @@ textarea {
 
 textarea {
   resize: vertical;
-  min-height: 100px;
+  min-height: 250px;
 }
 
 button {
@@ -60,41 +80,84 @@ button:hover {
   margin-top: 5px;
 }
 
-.previewsContainer {
+.imageContainer {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 15px;
+  align-items: flex-start; 
+  gap: 20px;
 }
 
-.preview {
-  width: 275px; /* 원하는 크기로 설정 */
-  height: 200px; /* 원하는 크기로 설정 */
-/* object-fit: cover; 이미지가 정사각형에 맞춰서 잘리도록 설정 */
-  margin-top: 5px;
-}
-
-.cameraButtonContainer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* 카메라 아이콘을 왼쪽 정렬 */
-  
-}
-
-.cameraButton {
-  width: 80px;
-  height: 80px;
+.imgButton {
   background: none;
   border: none;
-  cursor: pointer;  
-  
 }
 
-.cameraButton:hover {
+.imgButton:hover {
   background-color: transparent;
 }
 
-.cameraIcon {
-  width: 80px; /* 아이콘 크기 조정 */
-  height: 80px; /* 아이콘 크기 조정 */
+.imgIcon {
+  width: 135px;
+  height: 135px;
+}
+
+.previewsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.previewWrapper {
+  position: relative;
+  margin-bottom: 0px;
+  margin-right: 10px;
+}
+
+.preview {
+  width: 135px;
+  height: 135px;
+  object-fit: cover;
+  margin-top: 10px;
+}
+
+.xbutton {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.xbutton:hover {
+  background-color: transparent;
+}
+
+.xbutton img {
+  width: 100%;
+  height: 100%;
+}
+
+
+.radioContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.radioLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.radio {
+  margin-bottom: 15px; /* 간격 조절 */
+}
+
+.inputHalf {
+  width: 70%;
 }

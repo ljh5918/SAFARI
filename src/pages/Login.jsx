@@ -81,7 +81,7 @@ const Login = () => {
         <div className={styles.signuplink}>
           <a href="#" onClick={goTosignup}>회원가입</a>
         </div>
-        <p className={styles.snstitle}>---------------------   소셜 로그인   ---------------------</p>
+        <p className={styles.snstitle}>---------------------------   소셜 로그인   ---------------------------</p>
         <div className={styles.snsbtn}>
           <button className={styles.kakaologinbtn} type='button' onClick={KakaoLogin}>
             <img src={kakaoimg} alt="카카오로그인" />
