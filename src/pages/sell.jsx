@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import styles from '../styles/Sell.module.css';
@@ -6,9 +7,10 @@ import cameraIcon from "../images/camera5.png";
 import xicon from "../images/xicon.png";
 //yarn add yup, npm i yup, npm install formik yup
 
-const Sell = () => {
+const Sell = (onProductSubmit) => {
     const [images, setImages] = useState([]);
     const [previews, setPreviews] = useState([]);
+    const navigate = useNavigate();
 
     const initialValues = {
         title: '',
@@ -38,6 +40,7 @@ const Sell = () => {
         });
 
         console.log('Form data', values);
+       
     };
 
     const handleImageChange = (event) => {
@@ -63,6 +66,15 @@ const Sell = () => {
         newPreviews.splice(index, 1);
         setPreviews(newPreviews);
     };
+
+    //로그인 상태가 아닐 시 접근 불가
+    useEffect(() => {
+        // 페이지 접근 시 로그인 상태 확인
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+        if (!isLoggedIn) {
+            navigate('/auth'); // 로그인 상태가 아니라면 로그인 페이지로 이동
+        }
+    }, [navigate]);
 
     const categories = [
         { value: "패션의류", label: "패션의류" },
@@ -135,7 +147,7 @@ const Sell = () => {
                     
                     <div>
                         <label>* 카테고리</label>
-                        <br /> <br />
+                        <br /> <br /> <br />
                         <div className={styles.radioContainer} role="group" aria-labelledby="checkbox-group">
                             {categories.map((category, index) => (
                                 <label key={index} className={styles.radioLabel}>

@@ -5,8 +5,6 @@ import styles from "../styles/Signup.module.css";
 // import './Signup.css';
 
 
-
-
 const Signup = () => {
   const [formData, setFormData] = useState({
     id: '',
@@ -57,7 +55,7 @@ const selectAddress = (data) => {
     });
   };
   const handleCheckNickname = () => {
-    const existingNicknames = ['nickname1', 'nickname2', 'nickname3']; // 기존에 사용된 닉네임 목록
+    const existingNicknames = ['nickname1', 'nickname2', 'nickname3']; // 임시 닉네임
     const isTaken = existingNicknames.includes(formData.nickname);
     setIsNicknameTaken(isTaken);
     if (isTaken) {
@@ -89,9 +87,12 @@ const selectAddress = (data) => {
       setConfirmPasswordError('');
     }
 
-    // 여기에 회원가입 로직을 추가할 수 있습니다.
+    // 여기에 회원가입 로직을 추가 가능
+    // 회원가입 정보를 로컬 스토리지에 저장
+    localStorage.setItem('id', formData.id);
+    localStorage.setItem('password', formData.password);
     console.log(formData);
-    navigate('/Login'); // 회원가입 성공 시 로그인 페이지로 이동
+    navigate('/auth'); // 회원가입 성공 시 로그인 페이지로 이동
   };
 
   return (

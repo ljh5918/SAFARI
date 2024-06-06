@@ -7,14 +7,12 @@ import styles from '../styles/Login.module.css';
 
 const Login = () => {
   const [formData, setFormData] = useState({
-    username: '',
+    id: '',
     password: ''
   });
 
+  const [loginError, setLoginError] = useState('');
   const navigate = useNavigate();
-  const goTomain = () => {
-    navigate("/");
-  };
 
   const goTosignup = () => {
     navigate("/signup");
@@ -28,10 +26,23 @@ const Login = () => {
     });
   };
 
-  const handleLogin = () => {
-    // 로그인 로직 구현
-    console.log('아이디:', formData.username);
-    console.log('비밀번호:', formData.password);
+  const handleSubmit = (e) => {
+    //로그인 로직 구현
+    // 로컬 스토리지에서 저장된 ID와 비밀번호 가져오기
+    e.preventDefault();
+    const storedID = localStorage.getItem('id');
+    const storedPassword = localStorage.getItem('password');
+
+    // 입력한 ID와 비밀번호와 저장된 ID와 비밀번호 비교
+    if (formData.id === storedID && formData.password === storedPassword) {
+      localStorage.setItem('isLoggedIn', 'true'); 
+        // 일치하면 메인 페이지로 이동
+        navigate("/");
+    } else {
+        // 일치하지 않으면 알림창 띄우고 페이지 넘어가지 않음
+        alert('회원정보가 없습니다.');
+        setFormData({ username: '', password: '' });
+    }
   };
 
   // KakaoLogin
@@ -51,18 +62,20 @@ const Login = () => {
     window.location.href = NaverURL;
   };
 
+  
+
   return (
     <div className={styles.container}>
       {/* <h1 className={styles.title}>SAFARI</h1> */}
       <div className={styles.logincontainer}>
         <h3 className={styles.logintitle}>로그인</h3>
         <h6 className={styles.logintitleex}>시리얼 넘버를 통한 안전한 중고거래</h6>
-        <form className={styles.loginform} onSubmit={(e) => { e.preventDefault(); handleLogin(); }}>
+        <form className={styles.loginform} onSubmit={(e) => { e.preventDefault(); handleSubmit(); }}>
           <Form.Control
             type="text"
             className={styles.userid}
-            name="username"
-            value={formData.username}
+            name="id"
+            value={formData.id}
             onChange={handleChange}
             required placeholder='아이디'
             autoFocus
@@ -75,8 +88,9 @@ const Login = () => {
             onChange={handleChange}
             required placeholder='비밀번호'
           />
-          <button className={styles.loginbtn} type='submit' onClick={goTomain}>로그인</button>
-          {/* <Button className={styles.loginbtn} type='submit' onClick={goTomain}>로그인</Button> */}
+          
+          <button className={styles.loginbtn} type='submit' onClick={handleSubmit}>로그인</button>
+          {/* <Button className={styles.loginbtn} type='submit' onClick={handleSubmit}>로그인</Button> */}
         </form>
         <div className={styles.signuplink}>
           <a href="#" onClick={goTosignup}>회원가입</a>
