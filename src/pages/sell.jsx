@@ -6,60 +6,62 @@ import styles from '../styles/Sell.module.css';
 import cameraIcon from "../images/camera5.png";
 import xicon from "../images/xicon.png";
 //yarn add yup, npm i yup, npm install formik yup
+import ProductComponent from '../components/product/ProductComponent';
 
-const Sell = (onProductSubmit) => {
+const Sell = () => {
     const [images, setImages] = useState([]);
     const [previews, setPreviews] = useState([]);
     const navigate = useNavigate();
 
     const initialValues = {
+
         title: '',
-        description: '',
-        price: '',
         categories: '', // 카테고리를 문자열로 저장
+        price: '',
+        description: '',
     };
 
-    const validationSchema = Yup.object({
-        title: Yup.string().required('입력하지 않았습니다.'),
-        description: Yup.string().required('입력하지 않았습니다'),
-        price: Yup.number().required('입력하지 않았습니다'),
-        categories: Yup.string().required('카테고리를 선택하세요'), // 카테고리를 필수로 설정
-    });
 
+    
+
+    //전체 데이터를 FormData 객체로 생성 FormData는 폼 데이터를 서버로 전송할 대 사용
     const onSubmit = (values) => {
-        const formData = new FormData();
-        formData.append('title', values.title);
-        formData.append('description', values.description);
-        formData.append('price', values.price);
-        formData.append('categories', values.categories); // 하나의 카테고리를 문자열로 추가
-        images.forEach(image => {
+        const formData = new FormData(); //폼 데이터를 key-value 저장하여 쉽게 전송가능
+        images.forEach(image => {        //images 배열에 있는 모든 이미지를 ForData 객체에 추가 
             formData.append('images', image);
         });
-        values.categories.forEach(category => {
-            formData.append('categories', category);
-        });
-
+        formData.append('title', values.title);
+        formData.append('categories', values.categories); // 하나의 카테고리를 문자열로 추가
+        formData.append('price', values.price);
+        formData.append('description', values.description);
+        
         console.log('Form data', values);
        
     };
 
+    //파일 업로드, 미리보기
     const handleImageChange = (event) => {
-        const files = Array.from(event.target.files);
-        setImages(files);
+        const files = Array.from(event.target.files); // 파일을 배열로 변환
+        setImages(files); // 이미지 파일 저장
 
-        const newPreviews = files.map(file => {
+        const newPreviews = [];
+        files.forEach(file => {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreviews(prev => [...prev, reader.result]);
+                newPreviews.push(reader.result);
+                // 모든 파일의 미리보기를 설정한 후에 상태를 업데이트
+                if (newPreviews.length === files.length) {
+                    setPreviews(newPreviews);
+                }
             };
             reader.readAsDataURL(file);
-            return reader;
         });
     };
 
+    //미리보기 이미지 삭제
     const handleRemoveImage = (index) => {
         const newImages = [...images];
-        newImages.splice(index, 1);
+         newImages.splice(index, 1);
         setImages(newImages);
 
         const newPreviews = [...previews];
@@ -75,6 +77,14 @@ const Sell = (onProductSubmit) => {
             navigate('/auth'); // 로그인 상태가 아니라면 로그인 페이지로 이동
         }
     }, [navigate]);
+
+    
+    const validationSchema = Yup.object({
+        title: Yup.string().required('입력하지 않았습니다.'), //모두 필수 입력
+        categories: Yup.string().required('카테고리를 선택하세요'),
+        price: Yup.number().required('입력하지 않았습니다'),
+        description: Yup.string().required('입력하지 않았습니다'),
+    });
 
     const categories = [
         { value: "패션의류", label: "패션의류" },
@@ -195,7 +205,7 @@ const Sell = (onProductSubmit) => {
                         <ErrorMessage name="description" component="div" className={styles.error} />
                     </div>
 
-                    <button type="submit">판매하기</button>
+                    <button type="submit" >판매하기</button>
                 </Form>
             </Formik>
         </div>
