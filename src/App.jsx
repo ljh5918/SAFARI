@@ -1,4 +1,4 @@
-
+import React, { useState } from 'react'; 
 
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
@@ -17,28 +17,17 @@ import Home from "./pages/home/Home";
 import Electronic from "./components/electronic/Electronic";
 import ProductComponent from "./components/product/ProductComponent";
 import Footer from "./components/footer/Footer";
-import Auth from "./pages/auth/Auth";
 
+
+export const ProductContext = React.createContext();
 
 
 function App() {
+  const [products, setProducts] = useState([]);
+
   return (
-    
-    // <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/" element={<Main />} />
-    //     <Route path="/Signup" element={<Signup />} />
-    //     <Route path="/Login" element={<Login />} />
-    //     <Route path="/Mypage" element={<Mypage/>} />
-    
-    //   </Routes>
-    // </BrowserRouter> 
-    
-
-
-
     // <Provider store={store}>
-  
+    <ProductContext.Provider value={{ products, setProducts }}>  
       <Router>
         <Header />
         <Routes>
@@ -59,7 +48,8 @@ function App() {
         </Routes>
         <Footer />
       </Router>
-    //  </Provider>
+      </ProductContext.Provider>
+      /* </Provider> */
  
   );
 }
