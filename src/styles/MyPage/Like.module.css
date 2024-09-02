@@ -1,0 +1,87 @@
+
+.like {
+    text-align: center;
+}
+
+.like h2 {
+    margin-bottom: 70px;
+    text-align: left;
+    font-size: 30px;
+    color: #ff5757;
+}
+
+.like table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.like th, .like td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    position: relative; 
+}
+
+
+/* 선 스타일 */
+
+.like td, .like th {
+    border-bottom: 1px solid #ddd; /* 가로 선 추가 */
+  }
+  
+  .like td {
+    border-right: 1px solid #ddd; /* 판매일자와 상품 사이에 구분선 추가 */
+  }
+  
+  .like td:last-child {
+    border-right: none; /* 마지막 선 없애기 */
+  }
+
+
+.likeProductInfo {
+    display: flex;
+    align-items: center;
+}
+
+.likeProductImage {
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.likeProductName {
+    margin: 0;
+    text-align: center; 
+}
+
+
+
+/* 상품 부분 너비*/
+.like th:first-child, .like td:first-child {
+    width: 75%;
+}
+
+/* 가격 부분 너비*/
+.like th:nth-child(2), .like td:nth-child(2) {
+    width: 15%;
+}
+
+/* 삭제 버튼 부분 너비 */
+.like th:last-child, .like td:last-child {
+    width: 10%;
+}
+
+/* 삭제 버튼 스타일 */
+button {
+    padding: 8px 12px;
+    background-color: #ff5757;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #e53935;
+}

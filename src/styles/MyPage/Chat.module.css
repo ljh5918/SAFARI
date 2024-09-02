@@ -1,0 +1,279 @@
+.chatContainer {
+  display: flex;
+  height: 650px; 
+  padding: 0px;
+  margin: 70px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  background-color: #fff;
+  overflow: hidden; 
+  
+}
+
+.roomList { /* 채팅방 목록 */
+  width: 50%;
+  border-right: 1px solid #ccc;
+  overflow-y: auto;
+}
+
+.roomListTitle {
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.room {
+  padding: 30px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center; 
+}
+
+.roomIconWrapper {  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; 
+  height: 40px; 
+  border-radius: 50%; /* 원형으로 만들기 */
+  background-color: #ff8181; 
+  margin-right: 10px; 
+}
+
+.roomIcon {
+  font-size: 18px; 
+  color: #fbf6f6; 
+}
+
+.activeRoom {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+ 
+
+.chatBox { /* 채팅창 */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  padding-left: 0%;
+  padding-right: 0%;
+}
+
+.chatHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #4e4e4e;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.chatHeaderIconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px; 
+  height: 35px; 
+  border-radius: 50%; 
+  background-color: #dfdfdf; 
+  margin-right: 10px; 
+}
+
+.chatHeaderIcon {
+  font-size: 18px; 
+  color: #ffffff; 
+}
+
+.chatMessages {
+  flex: 1;
+  overflow-y: auto; 
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column; 
+  padding: 10px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 10px; 
+  position: relative;
+  flex-wrap: wrap; 
+  
+}
+
+.messageContent {   /*채팅 쳤을 때 뜨는*/
+  margin-left: 0px; /* 타임스탬프와 메시지 간의 여백 */
+  padding: 12px;
+  border-radius: 40px;
+  max-width: 100%;     /*calc(100% - 60px); /* 타임스탬프와의 여백을 고려한 최대 너비 */
+  word-wrap: break-word; 
+  box-sizing: border-box; 
+  position: relative;
+  background-color: #fff6f6; 
+  
+  
+}
+
+.messageContent.imageMessage {
+  background-color: #ffffff; /* 이미지 보낼때는 배경색 흰색 */
+}
+
+.sent {       /* 전송자 */
+  align-self: flex-end;
+  background-color: #fff6f6;
+  border-radius: 40px;
+  max-width: 70%;
+
+}
+
+.received {     /* 수신자 */
+  align-self: flex-start;
+  background-color: #fff6f6;
+  border-radius: 10px;
+  max-width: 70%;
+  
+}
+
+.messageImage {
+  max-width: 300px; 
+  max-height: 200px; 
+  width: auto; 
+  height: auto; 
+  display: block; 
+  
+
+}
+
+.messageTime {
+  position: absolute;
+  left: -50px; /* 메시지 박스의 왼쪽에 위치하도록 조정 */
+  bottom: -1px; /* 아래에 위치하도록 */
+  color: #999; 
+  font-size: 12px; 
+  
+}
+
+.messageForm {
+  margin-top: 15px;
+  display: flex;
+  align-items: center; 
+  border-top: 1px solid #f2f2f2;
+  padding-top: 10px;
+}
+
+.inputWrapper {         /*메시지 전송창 전체*/
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border-radius: 20px;
+  background-color: #ffffff; /* 배경색을 추가하여 입력 필드와 버튼이 구분되도록 */
+  padding: 5px; /* 여백 추가 */
+}
+
+.messageInput {         /*메시지를 입력하세요, 파일선택*/
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  
+  background-color: #f8f8f8;
+  margin-right: 60px; /* 파일 선택 버튼과 겹치지 않도록 여백을 추가 */
+  
+}
+
+.inputIcons {        /*전송버튼부분*/
+  display: flex;
+  align-items: center;
+}
+
+.fileInput {
+  display: none; /* 파일 입력은 숨기기 */
+}
+
+.fileInputLabel {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ff5757;
+  z-index: 1;
+  margin-right: 80px; /* 전송 버튼과의 간격을 설정 */
+}
+
+.fileInputLabel i {     /*카메라 아이콘 */
+  font-size: 25px;
+}
+
+
+.sendButton {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ff5757;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.sendButton:hover {
+  background-color: #e53935;
+}
+
+.imagePreview {
+  margin-top: 10px;
+  max-width: 100%px; 
+  height: auto; 
+  overflow: hidden; 
+  position: relative; 
+}
+
+.cancelButton {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ff5757;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.previewImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.dateText {   /*날짜*/
+  font-size: 12px;
+  text-align: center;
+  color: #ccc; 
+}
+
+.dateSeparator {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.dateLine {   /* 날짜 옆 실선*/
+  flex: 1;
+  border-top: 1px solid #f2f2f2;
+}
+

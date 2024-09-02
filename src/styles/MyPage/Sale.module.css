@@ -1,0 +1,81 @@
+.sale {
+    text-align: center;
+  }
+  
+  .sale h2 {
+    margin-bottom: 70px;
+    text-align: left;
+    font-size: 30px;
+    color: #ff5757;
+    
+    
+  }
+  
+  .sale table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sale th, .like td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    position: relative; 
+  }
+  
+  /* 선 스타일 */
+  .sale td, .sale th {
+    border-bottom: 1px solid #ddd; 
+  }
+  
+  .sale td {
+    border-right: 1px solid #ddd; 
+  }
+  
+  .sale td:last-child {
+    border-right: none; 
+  }
+  
+  .saleProductInfo {
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .saleProductImage {
+    width: 100px;
+    height: auto;
+    margin: 10px;
+  }
+  
+  .saleProductName {
+    margin: 0;
+  }
+  
+  
+  .sale th:first-child, .sale td:first-child {
+    width: 15%;
+  }
+  .sale th:nth-child(2), .sale td:nth-child(2) {
+    width: 70%;
+  }
+  .sale th:last-child, .sale td:last-child {
+    width: 15%;
+  }
+  
+  
+  /* 삭제 버튼 스타일 */
+  button {
+    padding: 8px 12px;
+    background-color: #ff5757;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #e53935;
+  }
+  

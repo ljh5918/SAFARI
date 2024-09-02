@@ -1,56 +1,60 @@
 import React, { useState } from 'react'; 
-
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import Sell from "./pages/sell";
-
-// import { Routes, Route, BrowserRouter } from "react-router-dom";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/header/Header";
+import Home from "./pages/home/Home";
+import Signup from "./pages/auth/Signup";
+import Login from "./pages/auth/Login";
+import Sell from "./pages/sell/Sell";
+import Product from "./components/product/Product";
+import ProductDetail from "./components/product/ProductDetail";
+import ProductPage from "./pages/ProductPage/ProductPage";
+import Footer from "./components/footer/Footer";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import { Provider } from "react-redux"; 
-import store from "./store/store";
-import Header from "./components/header/Header";
-import Home from "./pages/home/Home";
-import Electronic from "./components/electronic/Electronic";
-import ProductComponent from "./components/product/ProductComponent";
-import Footer from "./components/footer/Footer";
 
 
-export const ProductContext = React.createContext();
+
+import SearchResult from './components/header/SearchResult';
+
+
+import MyPage from './pages/MyPage/MyPage'; 
+import UserProfile from './pages/MyPage/UserProfile'; 
+import Chat from './pages/MyPage/Chat';
 
 
 function App() {
-  const [products, setProducts] = useState([]);
+  console.log("App component rendered");
+ 
 
   return (
-    // <Provider store={store}>
-    <ProductContext.Provider value={{ products, setProducts }}>  
-      <Router>
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <ProductComponent />
-                <Electronic />
-              </>
-            }
-          />
-          <Route path="/auth" element={<Login />} />
-          <Route path="/Signup" element={<Signup />} />
-          <Route path="/Sell" element={<Sell/>}/>
-          
-        </Routes>
-        <Footer />
-      </Router>
-      </ProductContext.Provider>
-      /* </Provider> */
- 
+    <Router>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Home />
+              <Product />
+            </>
+          }
+        />
+        <Route path="/auth" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/sell" element={<Sell />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/category/:categoryName" element={<ProductPage />} />
+        
+        {/* <Route path="/SearchBar" element={<SearchBar />} /> */}
+        <Route path="/search-results" element={<SearchResult />} />
+        <Route path="/MyPage" element={<MyPage />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/Chat" element={<Chat />} />
+
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

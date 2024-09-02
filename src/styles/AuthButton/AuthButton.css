@@ -1,0 +1,40 @@
+.auth-button {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 3px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-width: 90px;
+}
+
+.dropdown-menu button {
+  margin: 4px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 3px;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+  font-weight: bold;
+  color: #333;
+  border-radius: 2px;
+  
+}
+
+.dropdown-menu button:hover {
+  color: #e94560;
+ 
+}
+
+
+

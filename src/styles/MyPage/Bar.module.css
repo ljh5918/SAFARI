@@ -1,0 +1,35 @@
+.menuBar {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-bottom: 0px;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #dfdfdf; /* 바 전체에 테두리 추가 */
+  }
+  
+  .menuItem {
+    padding: 5px 50px;
+    margin: 0; /* 좌우 여백 */
+    cursor: pointer;
+    color: #000000; /* 글자색 */
+    font-size: 20px;
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: bold; /* 굵은 글자 */
+    position: relative; /* 부모 위치 설정 */
+  }
+  
+
+
+  .menuItem:hover {
+    color: #555; /* 호버 시 색상 변경 */
+  }
+
+  .menuItem.active {
+    background-color: #8e7676; /* 선택된 메뉴의 배경색 */
+    color: #ffffff; /* 선택된 메뉴의 텍스트 색상 */
+  }
+
+  .activeButton {
+    color: #ffffff; /* 선택된 버튼의 텍스트 색상 */
+  }
+  

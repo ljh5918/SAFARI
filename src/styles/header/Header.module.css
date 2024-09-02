@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+:global * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:global html {
+  scroll-behavior: smooth;
+}
+
+:global body {
+  font-family: "Poppins", sans-serif;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 90%;
+  margin: auto;
+}
+
+/* .d_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px; 
+} */
+
+.d_flex {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  gap: 20px; /*로고와 버튼 사이의 간격 유지 */
+}
+
+.c_flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.f_flex {
+  display: flex;
+  align-items: center;
+}
+
+:global a {
+  text-decoration: none;
+  color: black;
+}
+
+:global a:hover {
+  color: #e94560;
+}
+
+.header {
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky; 
+  top: 0; 
+  z-index: 1000; 
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+}
+
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+  margin-right: 20px; /* 로고와 검색창 사이의 간격 유지 */
+}
+
+
+
+.searchBox {
+  flex: 2; /* 검색창의 flex-grow 값을 높여 공간을 더 많이 차지하게 함 */
+  margin: 0 10px; /* 좌우 여백을 줄임으로써 더 넓어지게 함 */
+  position: relative;
+  width: 450px;
+  max-width: 800px; /* 최대 너비를 늘림 */
+}
+
+.searchBox input {
+  width: 180%;
+  padding: 12px 40px 12px 20px;
+  border: none;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #495057;
+  outline: none;
+  border-radius: 10px;
+}
+
+.searchBox .icon {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  color: #6c757d;
+  font-size: 20px;
+}
+
+
+.navMenu {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.navMenu a {
+  margin: 0 10px; 
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.navMenu a:hover {
+  color: #ff5757;
+}
+
+.authButton {
+  display: flex;
+  align-items: center;
+  margin-left: 10px; 
+  gap: 20px;
+}
+
+
+
+.authButton a {
+  color: #ff5757; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.authButton a:hover {
+  color: #ff5757;
+}
+
+.categoryContainer {
+  display: flex;
+  justify-content: flex-start; 
+  width: 100%; 
+  padding-left: 390px;
+  margin-top: 25px;
+}
+
+.categoryButtonWrapper {
+  position: relative;
+}
+
+.categoryButton {
+  background-color: #ff5757;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chevronIcon {
+  margin-left: 8px;
+}
+
+.categoryButton:hover {
+  background-color: #e94560;
+  transform: translateY(-2px);
+}
+
+.categoryDropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  background-color: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+}
+
+.categoryItem {
+  padding: 12px 24px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.categoryItem:hover {
+  background-color: #e94560;
+  color: #fff;
+}
+
