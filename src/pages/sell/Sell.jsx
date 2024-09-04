@@ -233,6 +233,7 @@ import * as Yup from 'yup';
 import styles from '../../styles/sell/Sell.module.css';
 import cameraIcon from "../../images/camera5.png";
 import xicon from "../../images/xicon.png";
+import SearchResult from '../../components/header/SearchResult';
 
 const Sell = () => {
   const [images, setImages] = useState([]);
@@ -250,7 +251,7 @@ const Sell = () => {
   const onSubmit = async (values) => {
     try {
       const imageUrls = await uploadImagesToServer(images);
-
+      
       const newProduct = {
         id: Date.now(),
         title: values.title,
@@ -259,7 +260,9 @@ const Sell = () => {
         description: values.description,
         status: values.status,
         images: imageUrls,
+        timestamp: Date.now(), // 현재 시간을 밀리초 단위로 저장
       };
+
 
       // Get existing products from localStorage
       const existingProducts = JSON.parse(localStorage.getItem('products')) || [];

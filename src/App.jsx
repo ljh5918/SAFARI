@@ -21,6 +21,7 @@ import SearchResult from './components/header/SearchResult';
 import MyPage from './pages/MyPage/MyPage'; 
 import UserProfile from './pages/MyPage/UserProfile'; 
 import Chat from './pages/MyPage/Chat';
+import EditProduct from './pages/MyPage/EditProducts';
 
 
 function App() {
@@ -46,11 +47,12 @@ function App() {
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/category/:categoryName" element={<ProductPage />} />
         
-        {/* <Route path="/SearchBar" element={<SearchBar />} /> */}
+        
         <Route path="/search-results" element={<SearchResult />} />
         <Route path="/MyPage" element={<MyPage />} />
         <Route path="/UserProfile" element={<UserProfile />} />
         <Route path="/Chat" element={<Chat />} />
+        <Route path="/Edit-Products/:id" element={<EditProduct />} />
 
       </Routes>
       <Footer />
