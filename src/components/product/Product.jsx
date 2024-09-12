@@ -1,209 +1,6 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import styles from "../../styles/product/Product.module.css";
-
-// const initialProducts = Array.from({ length: 15 }, (_, index) => ({
-//   id: index + 1,
-//   image: `/images/image${index + 1}.png`,
-//   title: `상품 ${index + 1}`,
-//   price: `${(index + 1) * 10000}원`,
-//   time: `${index + 1}시간 전`,
-//   likes: Math.floor(Math.random() * 100),
-//   chats: Math.floor(Math.random() * 20),
-//   status: ["AVAILABLE", "RESERVED", "SOLD"][Math.floor(Math.random() * 3)],
-// }));
-
-// const moreProducts = Array.from({ length: 15 }, (_, index) => ({
-//   id: initialProducts.length + index + 1,
-//   image: `/images/image${initialProducts.length + index + 1}.png`,
-//   title: `상품 ${initialProducts.length + index + 1}`,
-//   price: `${initialProducts.length + index + 1}만원`,
-//   time: `${initialProducts.length + index + 1}시간 전`,
-//   likes: Math.floor(Math.random() * 100),
-//   chats: Math.floor(Math.random() * 20),
-//   status: ["AVAILABLE", "RESERVED", "SOLD"][Math.floor(Math.random() * 3)],
-// }));
-
-// const Product = () => {
-//   const [products, setProducts] = useState(initialProducts);
-//   const navigate = useNavigate();
-
-//   const loadMoreProducts = () => {
-//     setProducts((prevProducts) => [...prevProducts, ...moreProducts]);
-//   };
-
-//   const handleClick = (id) => {
-//     navigate(`/products/${id}`);
-//     window.scrollTo(0, 0);
-//   };
-
-//   return (
-//     <section className={styles.productSection}>
-//       <div className={styles.container}>
-//         <div className={styles.heading}>
-//           <h2>새로 등록된 상품</h2>
-//         </div>
-//         <div className={styles.productGrid}>
-//           {products.map((product) => (
-//             <div
-//               className={styles.productBox}
-//               key={product.id}
-//               onClick={() => handleClick(product.id)}
-//             >
-//               <div className={styles.productItem}>
-//                 <div className={styles.productImg}>
-//                   <img src={product.image} alt={product.title} />
-//                   {product.status === "RESERVED" && (
-//                     <div className={styles.reserved}>
-//                       <h2>예약중</h2>
-//                     </div>
-//                   )}
-//                   {product.status === "SOLD" && (
-//                     <div className={styles.sold}>
-//                       <h2>거래완료</h2>
-//                     </div>
-//                   )}
-//                 </div>
-//                 <div className={styles.productDetails}>
-//                   <h4>{product.title}</h4>
-//                   <span>{product.price}</span>
-//                   <p>{product.time}</p>
-//                   <p>❤️ {product.likes} 💬 {product.chats}</p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//         <div className={styles.moreButtonContainer}>
-//           <button onClick={loadMoreProducts} className={styles.loadMoreButton}>
-//             더보기
-//           </button>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Product;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useState, useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import styles from '../../styles/product/Product.module.css';
-
-// const Product = () => {
-//   const [products, setProducts] = useState([]);
-//   const navigate = useNavigate();
-
-//   useEffect(() => {
-//     // localStorage에서 상품을 가져오기
-//     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-//     // 최신 상품이 먼저 오도록 상품을 ID 내림차순으로 정렬
-//     const sortedProducts = storedProducts.sort((a, b) => b.id - a.id);
-//     setProducts(sortedProducts);
-//   }, []);
-
-//   const loadMoreProducts = () => {
-//     // 더 보기 버튼 더 많은 상품을 가져오는 로직을 업데이트 가능
-//   };
-
-//   const handleClick = (id) => {
-//     navigate(`/products/${id}`);
-//     window.scrollTo(0, 0);
-//   };
-
-//   return (
-//     <section className={styles.productSection}>
-//       <div className={styles.container}>
-//         <div className={styles.heading}>
-//           <h2>새로 등록된 상품</h2>
-//         </div>
-//         <div className={styles.productGrid}>
-//           {products.length > 0 ? (
-//             products.map((product) => (
-//               <div
-//                 className={styles.productBox}
-//                 key={product.id}
-//                 onClick={() => handleClick(product.id)}
-//               >
-//                 <div className={styles.productItem}>
-//                   <div className={styles.productImg}>
-//                     <img src={product.images[0]} alt={product.title} />
-//                     {product.status === 'RESERVED' && (
-//                       <div className={styles.reserved}>
-//                         <h2>예약중</h2>
-//                       </div>
-//                     )}
-//                     {product.status === 'SOLD' && (
-//                       <div className={styles.sold}>
-//                         <h2>거래완료</h2>
-//                       </div>
-//                     )}
-//                   </div>
-//                   <div className={styles.productDetails}>
-//                     <h4>{product.title}</h4>
-//                     <span>{product.price}</span>
-//                     <p>{product.time}</p>
-//                     <p>❤️ {product.likes} 💬 {product.chats}</p>
-//                   </div>
-//                 </div>
-//               </div>
-//             ))
-//           ) : (
-//             <div className={styles.noResultsMessage}>
-//               No products found.
-//             </div>
-//           )}
-//         </div>
-//         {products.length > 0 && (
-//           <div className={styles.moreButtonContainer}>
-//             <button onClick={loadMoreProducts} className={styles.loadMoreButton}>
-//               더보기
-//             </button>
-//           </div>
-//         )}
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Product;
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/product/Product.module.css';
-
 
 const calculateElapsedTime = (timestamp) => {
   const now = Date.now();
@@ -236,8 +33,8 @@ const Product = () => {
   }, []);
 
   const loadMoreProducts = () => {
-         // 더 보기 버튼 더 많은 상품을 가져오는 로직을 업데이트 가능
-      };
+    // 더 보기 버튼 더 많은 상품을 가져오는 로직을 업데이트 가능
+  };
 
   const handleClick = (id) => {
     navigate(`/products/${id}`);
@@ -276,7 +73,7 @@ const Product = () => {
                     <h4>{product.title}</h4>
                     <span>{product.price}</span>
                     <p>{calculateElapsedTime(product.timestamp)}</p>
-                    <p>❤️ {product.likes} 💬 {product.chats}</p>
+                    <p>❤️ {product.likes || 0} 💬 {product.chats || 0}</p>
                   </div>
                 </div>
               </div>
@@ -300,7 +97,6 @@ const Product = () => {
 };
 
 export default Product;
-
 
 
 

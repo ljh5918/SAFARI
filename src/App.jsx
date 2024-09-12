@@ -53,6 +53,8 @@ function App() {
         <Route path="/UserProfile" element={<UserProfile />} />
         <Route path="/Chat" element={<Chat />} />
         <Route path="/Edit-Products/:id" element={<EditProduct />} />
+        <Route path="/Product" element={<> <Home /> <Product /> </>} />
+
 
       </Routes>
       <Footer />

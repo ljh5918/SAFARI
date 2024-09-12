@@ -32,15 +32,15 @@ const Login = () => {
     e.preventDefault();
     const storedID = localStorage.getItem('id');
     const storedPassword = localStorage.getItem('password');
+    const storedNickname = localStorage.getItem('nickname');
 
     // 입력한 ID와 비밀번호와 저장된 ID와 비밀번호 비교
     if (formData.id === storedID && formData.password === storedPassword) {
       localStorage.setItem('isLoggedIn', 'true'); 
-        // 일치하면 메인 페이지로 이동
-        navigate("/");
+      localStorage.setItem('userId', storedNickname);
+        navigate("/");  // 일치하면 메인 페이지로 이동
     } else {
-        // 일치하지 않으면 알림창 띄우고 페이지 넘어가지 않음
-        alert('회원정보가 없습니다.');
+        alert('회원정보가 없습니다.');  // 일치하지 않으면 알림창 띄우고 페이지 넘어가지 않음
         setFormData({ username: '', password: '' });
     }
   };
