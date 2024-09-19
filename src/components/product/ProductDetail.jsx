@@ -6,25 +6,53 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [likes, setLikes] = useState(0);
+  const [liked, setLiked] = useState(false);
 
   useEffect(() => {
-    // Fetch the product from localStorage based on the ID from URL
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
     const foundProduct = storedProducts.find((item) => item.id === parseInt(id));
 
     if (foundProduct) {
       setProduct(foundProduct);
       setLikes(foundProduct.likes || 0);
+      setLiked(foundProduct.liked || false);
     }
   }, [id]);
+
+  useEffect(() => {
+    if (product) {
+      const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+      const updatedProducts = storedProducts.map((item) =>
+        item.id === parseInt(id) ? { ...item, likes, liked } : item
+      );
+      localStorage.setItem('products', JSON.stringify(updatedProducts));
+    }
+  }, [likes, liked, id, product]);
+
+  const handleLike = () => {
+    const newLiked = !liked;
+    const newLikes = newLiked ? likes + 1 : likes - 1;
+    setLikes(newLikes);
+    setLiked(newLiked);
+
+
+    let likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
+    if (newLiked) {
+      likedProducts.push({
+        id: product.id,
+        name: product.title,
+        price: product.price,
+        imageUrl: product.images[0]
+      });
+    } else {
+      likedProducts = likedProducts.filter(p => p.id !== product.id);
+    }
+    localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+  };
 
   if (!product) {
     return <div>상품을 찾을 수 없습니다.</div>;
   }
-
-  const handleLike = () => {
-    setLikes(likes + 1);
-  };
 
   return (
     <div className={styles.productDetail}>
@@ -36,7 +64,9 @@ const ProductDetail = () => {
           <h1>{product.title}</h1>
           <div className={styles.productPrice}>{product.price} 원</div>
           <div className={styles.productStats}>
-            <span>❤️ {likes}</span>
+            <span>
+              {liked ? '❤️' : '🤍'} {likes}
+            </span>
             <span>👀 {product.views || 0}</span>
             <span>🕒 {new Date(product.timestamp).toLocaleString()}</span>
           </div>
@@ -45,11 +75,10 @@ const ProductDetail = () => {
             <p>배송비: {product.deliveryFee || '무료배송'}</p>
           </div>
           <div className={styles.actionButtons}>
-            <button onClick={handleLike} className={styles.likeButton}>
-              찜하기
+            <button className={styles.likeButton} onClick={handleLike}>
+              {liked ? '찜 취소' : '찜하기'}
             </button>
             <button className={styles.chatButton}>채팅하기</button>
-            <button className={styles.buyButton}>구매하기</button>
           </div>
         </div>
       </div>

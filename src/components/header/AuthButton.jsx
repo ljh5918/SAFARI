@@ -12,7 +12,6 @@ const AuthButton = ({ scrollToTop }) => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   useEffect(() => {
-    // Ensures that the dropdown is not visible when the component mounts
     setDropdownVisible(false);
   }, [isLoggedIn]);
 
