@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import styles from '../../styles/MyPage/Chat.module.css';
 import styles from '../../styles/MyPage/Chat.module.css';
 
 const Chat = () => {

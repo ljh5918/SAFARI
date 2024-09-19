@@ -4,7 +4,7 @@ import styles from '../../styles/Search/SearchResult.module.css';
 
 const calculateElapsedTime = (timestamp) => {
   const now = Date.now();
-  const elapsedTime = now - timestamp; // Calculate elapsed time in milliseconds
+  const elapsedTime = now - timestamp;  // 초 단위로 경과 시간 계산
 
   const minutes = Math.floor(elapsedTime / 60000);
   if (minutes < 60) {
@@ -35,7 +35,7 @@ const SearchResult = () => {
       .filter(product =>
         product.title.toLowerCase().includes(query.toLowerCase())
       )
-      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp in descending order
+      .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); 
 
     setResults(filteredResults);
   }, [location.search]);
