@@ -7,7 +7,6 @@
   border-radius: 0px;
   background-color: #fff;
   overflow: hidden; 
-  
 }
 
 .roomList { /* 채팅방 목록 */
@@ -141,13 +140,11 @@
 }
 
 .messageImage {
-  max-width: 300px; 
-  max-height: 200px; 
+  max-width: 150px; 
+  max-height: 150px; 
   width: auto; 
   height: auto; 
   display: block; 
-  
-
 }
 
 .messageTime {
@@ -159,37 +156,35 @@
   
 }
 
-.messageForm {
+/* .messageForm {
   margin-top: 15px;
   display: flex;
   align-items: center; 
   border-top: 1px solid #f2f2f2;
   padding-top: 10px;
-}
+} */
 
-.inputWrapper {         /*메시지 전송창 전체*/
+.inputWrapper { /* 메시지 전송창 전체 */
   position: relative;
   display: flex;
   align-items: center;
   flex: 1;
   border-radius: 20px;
-  background-color: #ffffff; /* 배경색을 추가하여 입력 필드와 버튼이 구분되도록 */
+  background-color: #ffffff; /* 배경색 추가 */
   padding: 5px; /* 여백 추가 */
 }
 
-.messageInput {         /*메시지를 입력하세요, 파일선택*/
+.messageInput { /* 메시지 입력 필드 */
   flex: 1;
   padding: 10px;
   border: none;
   border-radius: 20px;
   font-size: 15px;
-  
   background-color: #f8f8f8;
-  margin-right: 60px; /* 파일 선택 버튼과 겹치지 않도록 여백을 추가 */
-  
+  margin-right: 20px; 
 }
 
-.inputIcons {        /*전송버튼부분*/
+.inputIcons { /* 카메라 아이콘과 전송 버튼을 감싸는 컨테이너 */
   display: flex;
   align-items: center;
 }
@@ -198,22 +193,19 @@
   display: none; /* 파일 입력은 숨기기 */
 }
 
-.fileInputLabel {
-  position: absolute;
-  right: 10px;
+.fileInputLabel { /* 카메라 아이콘 레이블 */
   cursor: pointer;
   font-size: 20px;
   color: #ff5757;
-  z-index: 1;
-  margin-right: 80px; /* 전송 버튼과의 간격을 설정 */
+  margin-right: 10px;
+  margin-top: 55px; 
 }
 
-.fileInputLabel i {     /*카메라 아이콘 */
+.fileInputLabel i { /* 카메라 아이콘 */
   font-size: 25px;
 }
 
-
-.sendButton {
+.sendButton { /* 전송 버튼 */
   padding: 8px 15px;
   border: none;
   border-radius: 5px;
@@ -222,19 +214,13 @@
   font-size: 14px;
   cursor: pointer;
   margin-right: 10px;
+  margin-top: 50px; 
 }
 
 .sendButton:hover {
   background-color: #e53935;
 }
 
-.imagePreview {
-  margin-top: 10px;
-  max-width: 100%px; 
-  height: auto; 
-  overflow: hidden; 
-  position: relative; 
-}
 
 .cancelButton {
   position: absolute;
@@ -253,12 +239,21 @@
   font-size: 16px;
 }
 
+/* .imagePreview {
+  margin-top: 10px;
+  max-width: 100%; 
+  height: auto; 
+  overflow: hidden; 
+  position: relative;
+}
+
 .previewImage {
-  width: 100%;
-  height: auto;
+  width: 150px; 
+  height: auto; 
   display: block;
   border-radius: 5px;
-}
+} */
+
 
 .dateText {   /*날짜*/
   font-size: 12px;

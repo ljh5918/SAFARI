@@ -1,8 +1,3 @@
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import styles from '../../styles/MyPage/Like.module.css';
 
@@ -71,3 +66,8 @@ const Like = () => {
 };
 
 export default Like;
+
+
+
+
+

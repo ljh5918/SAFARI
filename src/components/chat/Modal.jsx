@@ -45,7 +45,7 @@ const Modal = ({ isOpen, onClose, children }) => {
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
         onMouseDown={handleMouseDown}
-        style={{ position: 'absolute', cursor: 'move' }}
+        style={{ position: 'absolute' }}
       >
         <button className="modal-close" onClick={onClose}>×</button>
         {children}
