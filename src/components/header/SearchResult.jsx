@@ -76,7 +76,7 @@ const SearchResult = () => {
                   <h4>{product.title}</h4>
                   <span>{product.price} 원</span>
                   <p>{calculateElapsedTime(product.timestamp)}</p>
-                  <p>❤️ {product.likes || 0} 💬 {product.chats || 0}</p>
+                  <p>❤️ {product.likes || 0} 조회수 {product.chats || 0}</p>
                 </div>
               </div>
             ))

@@ -55,7 +55,6 @@ function App() {
         <Route path="/Edit-Products/:id" element={<EditProduct />} />
         <Route path="/Product" element={<> <Home /> <Product /> </>} />
 
-
       </Routes>
       <Footer />
     </Router>

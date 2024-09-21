@@ -1,75 +1,82 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
-}
-
-.footerContainer {
-  max-width: 90%;
-  margin: auto;
-}
-
 .footer {
-  padding: 40px 0;
+  padding: 40px 20px;
   background-color: #ff5757;
-  color: #f8f9fa; 
+  color: #f8f9fa;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
 }
 
-.footerBox {
-  margin-bottom: 20px;
-  text-align: left;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto; 
 }
-.footerTitle {
+
+.main {
+  width: 100%; 
+  margin-bottom: 30px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.title {
   font-size: 24px;
+  font-weight: 700; 
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 16px; 
+  line-height: 1.6;
+  margin-bottom: 20px; 
+}
+
+.subtitle {
+  font-size: 18px; 
   font-weight: 600;
   margin-bottom: 10px;
 }
 
-.footer p {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 20px;
-}
-
-.footerSubtitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  text-align: left;
-}
-
-.footer ul {
+.list {
   list-style: none;
   padding: 0;
+  margin-left: 0; 
 }
 
-.footer ul li {
+.item {
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.8; 
   margin-bottom: 10px;
 }
 
-.footer ul li a {
+.item a {
   color: #f8f9fa;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.footer ul li a:hover {
+.item a:hover {
   color: #e94560;
 }
 
-.footerBottom {
+.bottom {
+  border-top: 1px solid #f8f9fa;
+  padding-top: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.copy {
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 10px;
+}
+
+
+.leftAlign {
   text-align: left;
-  font-weight: 600;
 }

@@ -14,10 +14,10 @@ const Home = () => {
       id: 1,
       title: "사고 파는 우리! 사파리",
       desc: "시리얼 넘버 기반 중고거래",
-      //cover: require("../../assets/slide-1.png"),
+      cover: require("../../assets/slide-1.png"),
     },
     {
-      id: 2,
+    id: 1,
       title: "사고 파는 우리! 사파리",
       desc: "시리얼 넘버 기반 중고거래",
       //cover: require("../../assets/slide-2.png"),

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Modal from '../chat/Modal';
-import Chat from '../../pages/MyPage/Chat'; // Chat 컴포넌트를 가져옵니다.
+import Chat from '../../pages/MyPage/Chat';
 import styles from '../../styles/header/Header.module.css';
 
 const NavMenu = ({ scrollToTop }) => {

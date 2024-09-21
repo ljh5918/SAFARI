@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import styles from "../../styles/product/ProductDetail.module.css";
+import Chat from '../../pages/MyPage/Chat';
+import Modal from '../chat/Modal';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [likes, setLikes] = useState(0);
   const [liked, setLiked] = useState(false);
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -35,7 +38,6 @@ const ProductDetail = () => {
     setLikes(newLikes);
     setLiked(newLiked);
 
-
     let likedProducts = JSON.parse(localStorage.getItem('likedProducts')) || [];
     if (newLiked) {
       likedProducts.push({
@@ -48,6 +50,14 @@ const ProductDetail = () => {
       likedProducts = likedProducts.filter(p => p.id !== product.id);
     }
     localStorage.setItem('likedProducts', JSON.stringify(likedProducts));
+  };
+
+  const handleOpenChat = () => {
+    setIsChatOpen(true);
+  };
+
+  const handleCloseChat = () => {
+    setIsChatOpen(false);
   };
 
   if (!product) {
@@ -67,18 +77,14 @@ const ProductDetail = () => {
             <span>
               {liked ? '❤️' : '🤍'} {likes}
             </span>
-            <span>👀 {product.views || 0}</span>
-            <span>🕒 {new Date(product.timestamp).toLocaleString()}</span>
-          </div>
-          <div className={styles.productDetails}>
-            <p>상품상태: {product.status}</p>
-            <p>배송비: {product.deliveryFee || '무료배송'}</p>
+            <span>조회수 {product.views || 0}</span>
+            <span>등록시간 {new Date(product.timestamp).toLocaleString()}</span>
           </div>
           <div className={styles.actionButtons}>
             <button className={styles.likeButton} onClick={handleLike}>
               {liked ? '찜 취소' : '찜하기'}
             </button>
-            <button className={styles.chatButton}>채팅하기</button>
+            <button className={styles.chatButton} onClick={handleOpenChat}>채팅하기</button>
           </div>
         </div>
       </div>
@@ -102,21 +108,12 @@ const ProductDetail = () => {
           )}
         </div>
       </div>
+
+      <Modal isOpen={isChatOpen} onClose={handleCloseChat}>
+        <Chat />
+      </Modal>
     </div>
   );
 };
 
 export default ProductDetail;
-
-
-
-
-
-
-
-
-
-
-
-
-

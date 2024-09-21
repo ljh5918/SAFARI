@@ -39,17 +39,14 @@
   margin-bottom: 20px;
 }
 
-.productDetails p {
-  margin: 5px 0;
-}
-
 .productDescription {
   margin-top: 20px;
 }
 
 .actionButtons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px;
   margin-top: 20px;
 }
 
@@ -67,12 +64,7 @@
 }
 
 .chatButton {
-  background-color: #6c757d;
-  color: white;
-}
-
-.buyButton {
-  background-color: #28a745;
+  background-color: #ff5757;
   color: white;
 }
 
