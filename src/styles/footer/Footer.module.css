@@ -3,40 +3,37 @@
   background-color: #ff5757;
   color: #f8f9fa;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  text-align: center; 
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto; 
+  margin: 0 auto;
 }
 
 .main {
-  width: 100%; 
-  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .section {
-  margin-bottom: 20px;
+  width: 35%;
+  margin: 0 20px;
+  text-align: center;
 }
 
 .title {
   font-size: 24px;
-  font-weight: 700; 
+  font-weight: 700;
   margin-bottom: 10px;
 }
 
-.description {
-  font-size: 16px; 
-  line-height: 1.6;
-  margin-bottom: 20px; 
-}
-
 .subtitle {
-  font-size: 18px; 
+  font-size: 18px;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -44,22 +41,24 @@
 .list {
   list-style: none;
   padding: 0;
-  margin-left: 0; 
+  margin-left: 0;
 }
 
 .item {
   font-size: 16px;
-  line-height: 1.8; 
+  line-height: 1.8;
   margin-bottom: 10px;
+  text-align: center;
 }
 
-.item a {
+.iconLink {
+  margin-left: 10px;
   color: #f8f9fa;
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 20px;
 }
 
-.item a:hover {
+.iconLink:hover {
   color: #e94560;
 }
 
@@ -75,8 +74,13 @@
   font-weight: 400;
   margin-top: 10px;
 }
+.iconLink {
+  margin-left: 10px;
+  color: #f8f9fa;
+  text-decoration: none;
+  font-size: 20px;
+}
 
-
-.leftAlign {
-  text-align: left;
+.iconLink:hover {
+  color: #e94560;
 }

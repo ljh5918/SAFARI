@@ -12,38 +12,53 @@ const Sell = () => {
   const navigate = useNavigate();
 
   const initialValues = {
-    title: '',
-    categories: '',
+    itemNm: '',
+    itemCategory: '',
     price: '',
-    description: '',
-    status: 'AVAILABLE',
+    itemDetail: '',
+    stockNumber: '',
+    itemSellStatus: 'SELL', // Default status
   };
 
   const onSubmit = async (values) => {
+    const formData = new FormData();
+    formData.append("itemNm", values.itemNm);
+    formData.append("itemCategory", values.itemCategory);
+    formData.append("price", values.price);
+    formData.append("itemDetail", values.itemDetail);
+    formData.append("stockNumber", values.stockNumber);
+    formData.append("itemSellStatus", values.itemSellStatus);
+
+    // 이미지 추가
+    images.forEach(image => {
+      formData.append("itemImgFile", image);
+    });
+
+    const token = localStorage.getItem('token'); // 로컬에서 토큰 가져오기
     try {
-      // 이미지 파일을 base64로 저장
-      const base64Images = await Promise.all(images.map(imageToBase64));
+      const response = await fetch('/admin/item/new', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`, // Include the token in the Authorization header
+        },
+        body: formData,
+      });
 
-      const newProduct = {
-        id: Date.now(),
-        title: values.title,
-        categories: values.categories,
-        price: values.price,
-        description: values.description,
-        status: values.status,
-        images: base64Images, // base64로 인코딩된 이미지
-        timestamp: Date.now(),
-      };
-
-      const existingProducts = JSON.parse(localStorage.getItem('products')) || [];
-      existingProducts.push(newProduct);
-      localStorage.setItem('products', JSON.stringify(existingProducts));
-
-      navigate('/Product');
+      if (response.ok) {
+        const data = await response.json(); // JSON 응답 파싱
+        alert(data.message); // 메시지를 알림으로 표시
+        navigate('/Product'); // Navigate to the products page after successful submission
+        
+      } else {
+        const errorResponse = await response.json();
+        alert(`상품 등록 중 에러가 발생하였습니다: ${errorResponse.message}`); // JSON에서 메시지를 표시
+      }
     } catch (error) {
       console.error('Error saving product:', error);
+      alert('상품 등록 중 서버와의 연결에 문제가 발생하였습니다.'); // 서버 연결 문제에 대한 메시지
     }
   };
+  
 
   const handleImageChange = (event) => {
     const files = Array.from(event.target.files);
@@ -72,15 +87,6 @@ const Sell = () => {
     setPreviews(newPreviews);
   };
 
-  const imageToBase64 = (imageFile) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(imageFile);
-    });
-  };
-
   useEffect(() => {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     if (!isLoggedIn) {
@@ -89,11 +95,12 @@ const Sell = () => {
   }, [navigate]);
 
   const validationSchema = Yup.object({
-    title: Yup.string().required('입력하지 않았습니다.'),
-    categories: Yup.string().required('카테고리를 선택하세요'),
-    price: Yup.number().required('입력하지 않았습니다'),
-    description: Yup.string().required('입력하지 않았습니다'),
-    status: Yup.string().required('상태를 선택하세요'),
+    itemNm: Yup.string().required('상품명을 입력하세요.'),
+    itemCategory: Yup.string().required('카테고리를 선택하세요.'),
+    price: Yup.number().required('가격을 입력하세요.'),
+    itemDetail: Yup.string().required('상세 설명을 입력하세요.'),
+    stockNumber: Yup.number().required('재고 수량을 입력하세요.'),
+    itemSellStatus: Yup.string().required('상태를 선택하세요.'),
   });
 
   const categories = [
@@ -154,23 +161,25 @@ const Sell = () => {
           </div>
           <hr className={styles.hr2} />
           <div>
-            <label htmlFor="title">* 상품명</label>
+            <label htmlFor="itemNm">* 상품명</label>
             <br />
             <div>
-              <Field type="text" id="title" name="title" className={styles.inputHalf} placeholder="상품명을 입력해주세요." />
-              <ErrorMessage name="title" component="div" className={styles.error} />
+              <Field type="text" id="itemNm" name="itemNm" className={styles.inputHalf} placeholder="상품명을 입력해주세요." />
+              <ErrorMessage name="itemNm" component="div" className={styles.error} />
             </div>
           </div>
           <hr className={styles.hr2} />
           <div>
             <label>* 카테고리</label>
-            <br /> <br /> <br />
+            <br />
+            <br />
+            <br />
             <div className={styles.radioContainer} role="group" aria-labelledby="checkbox-group">
               {categories.map((category, index) => (
                 <label key={index} className={styles.radioLabel}>
                   <Field
                     type="radio"
-                    name="categories"
+                    name="itemCategory"
                     value={category.value}
                     className={styles.radio}
                   />
@@ -178,7 +187,7 @@ const Sell = () => {
                 </label>
               ))}
             </div>
-            <ErrorMessage name="categories" component="div" className={styles.error} />
+            <ErrorMessage name="itemCategory" component="div" className={styles.error} />
           </div>
           <hr className={styles.hr2} />
           <div>
@@ -192,39 +201,55 @@ const Sell = () => {
           </div>
           <hr className={styles.hr2} />
           <div>
-            <label htmlFor="description">* 자세한 설명</label>
+            <label htmlFor="itemDetail">* 자세한 설명</label>
             <br />
             <Field
               as="textarea"
-              id="description"
-              name="description"
+              id="itemDetail"
+              name="itemDetail"
               placeholder="-상품명(브랜드)
-                            -구매 시기
-                            -착용 기간
-                            -오염 여부
-                            -하자 여부
-                            *실제 촬영한 사진과 함께 상세 정보를 입력해주세요."
+                          -구매 시기
+                          -착용 기간
+                          -오염 여부
+                          -하자 여부
+                          *실제 촬영한 사진과 함께 상세 정보를 입력해주세요."
+              className={styles.inputDetail}
             />
-            <ErrorMessage name="description" component="div" className={styles.error} />
+            <ErrorMessage name="itemDetail" component="div" className={styles.error} />
           </div>
-          <button type="submit">판매하기</button>
+          <hr className={styles.hr2} />
+          <div>
+            <label htmlFor="stockNumber">* 재고 수량</label>
+            <br />
+            <Field type="number" id="stockNumber" name="stockNumber" className={styles.inputHalf} placeholder="재고 수량을 입력해주세요." />
+            <ErrorMessage name="stockNumber" component="div" className={styles.error} />
+          </div>
+          <hr className={styles.hr2} />
+          <div>
+            <label htmlFor="itemSellStatus">* 상품 상태</label>
+            <br />
+            <Field as="select" name="itemSellStatus" className={styles.inputHalf}>
+              <option value="SELL">판매 중</option>
+              <option value="SOLD_OUT">품절</option>
+            </Field>
+            <ErrorMessage name="itemSellStatus" component="div" className={styles.error} />
+          </div>
+          <hr className={styles.hr2} />
+          <button type="submit" className={styles.submitButton}>상품 등록하기</button>
         </Form>
       </Formik>
     </div>
   );
 };
 
-// Helper function to convert image file to base64
-const imageToBase64 = (imageFile) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onloadend = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(imageFile);
-  });
-};
-
 export default Sell;
+
+
+
+
+
+
+
 
 
 

@@ -167,3 +167,22 @@
 .categoryItem:hover {
   background-color: #f5f5f5;
 }
+
+/* src/styles/header/Header.module.css */
+
+.chatButton {
+  background: none;
+  border: none;
+  color: #000; /* 기존 링크 색상과 일치시키기 */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 10px; /* 기존 navMenu 항목과 간격 일치 */
+}
+
+.chatButton:hover {
+  color: #ff5757; /* 호버 시 강조색 */
+  text-decoration: underline;
+}
+

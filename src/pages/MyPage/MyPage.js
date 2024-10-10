@@ -8,18 +8,35 @@ import Products from './Products';
 import UserProfile from './UserProfile'; // UserProfile 컴포넌트 import
 import styles from '../../styles/MyPage/MyPage.module.css';
 
-// import Chat from './Chat';
-
 const MyPage = () => {
   const [activeSection, setActiveSection] = useState('Products');
   const [userId, setUserId] = useState(''); // 초기값은 빈 문자열
 
-  // 로그인 시 로컬 스토리지에서 닉네임을 가져옴
+  // 로그인 시 백엔드 서버에서 닉네임을 가져옴
   useEffect(() => {
-    const storedUserId = localStorage.getItem('nickname'); // 'nickname'에 저장된 닉네임 가져오기
-    if (storedUserId) {
-      setUserId(storedUserId);
-    }
+    const fetchUserInfo = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/members/myInfo', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT 토큰 헤더에 추가
+            'Content-Type': 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setUserId(data.name); 
+        } else {
+          console.error('Error fetching user info:', response.statusText);
+          // 필요 시 사용자에게 에러 메시지 표시
+        }
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    };
+
+    fetchUserInfo();
   }, []);
 
   const showSection = (sectionName) => {
@@ -34,7 +51,7 @@ const MyPage = () => {
             <i className={`${styles.icon} fas fa-store`}></i>
           </div>
           <div className={styles.userInfo}>
-            {/* 저장된 사용자 아이디(닉네임)를 표시 */}
+            {/* 백엔드에서 가져온 사용자 아이디(닉네임)를 표시 */}
             <div className={styles.userId}>{userId}</div>
             <Link to="/UserProfile" className={styles.editProfileButton}>회원정보 수정</Link>
           </div>

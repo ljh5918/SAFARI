@@ -41,8 +41,8 @@ const AuthButton = ({ scrollToTop }) => {
           {isDropdownVisible && (
             <div className="dropdown-menu">
               <button onClick={GoToMyPage}>마이 페이지</button>
-              <button onClick={toggleDropdown}>내 상품</button>
-              <button onClick={toggleDropdown}>찜 상품</button>
+              {/* <button onClick={toggleDropdown}>내 상품</button> */}
+              {/* <button onClick={toggleDropdown}>찜 상품</button> */}
               <button onClick={handleLogout}>로그아웃</button>
             </div>
           )}

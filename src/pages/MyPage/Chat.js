@@ -8,6 +8,10 @@ const Chat = () => {
   const [messages, setMessages] = useState({});
   const [image, setImage] = useState(null);
   const chatEndRef = useRef(null); // Ref for scrolling
+  
+
+ 
+  
 
   useEffect(() => {
     const savedMessages = JSON.parse(localStorage.getItem('messages')) || {};
