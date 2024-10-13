@@ -7,7 +7,7 @@ import Login from "./pages/auth/Login";
 import Sell from "./pages/sell/Sell";
 import Product from "./components/product/Product";
 import ProductDetail from "./components/product/ProductDetail";
-import ProductPage from "./pages/ProductPage/ProductPage";
+import CategoryPage from "./pages/ProductPage/CategoryPage";
 import Footer from "./components/footer/Footer";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -46,7 +46,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/sell" element={<Sell />} />
         <Route path="/products/:id" element={<ProductDetail />} />
-        <Route path="/category/:categoryName" element={<ProductPage />} />
+        <Route path="/category/:categoryName" element={<CategoryPage />} />
         
         
         <Route path="/search-results" element={<SearchResult />} />

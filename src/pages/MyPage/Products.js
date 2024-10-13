@@ -1,117 +1,13 @@
-
-
-
-// // import React, { Component } from 'react';
-// // import { useNavigate } from 'react-router-dom'; // useNavigate 훅 사용
-// // import styles from '../../styles/MyPage/Products.module.css';
-
-// // // HOC: navigate prop을 클래스 컴포넌트에 전달
-// // function withRouter(Component) {
-// //     function ComponentWithRouterProp(props) {
-// //         let navigate = useNavigate();
-// //         return <Component {...props} navigate={navigate} />;
-// //     }
-
-// //     return ComponentWithRouterProp;
-// // }
-
-// // class Products extends Component {
-// //     constructor(props) {
-// //         super(props);
-// //         this.state = {
-// //             products: [], // 등록한 상품 데이터 배열
-// //         };
-// //     }
-
-// //     componentDidMount() {
-// //         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-// //         this.setState({ products: storedProducts.reverse() });
-// //     }
-
-// //     handleDelete = (id) => {
-// //         const { products } = this.state;
-// //         const updatedProducts = products.filter(product => product.id !== id);
-// //         localStorage.setItem('products', JSON.stringify(updatedProducts));
-// //         this.setState({ products: updatedProducts });
-// //     };
-
-// //     handleEdit = (id) => {
-// //         // 수정 버튼 클릭 시 호출, navigate로 페이지 이동
-// //         this.props.navigate(`/Edit-Products/${id}`);
-// //     };
-
-// //     render() {
-// //         return (
-// //             <div className={styles.Products}>
-// //                 <h2>등록한 상품</h2>
-// //                 <table>
-// //                     <thead>
-// //                         <tr>
-// //                             <th>상품</th>
-// //                             <th>가격</th>
-// //                             <th>수정</th>
-// //                             <th>삭제</th>
-// //                         </tr>
-// //                     </thead>
-// //                     <tbody>
-// //                         {this.state.products.map(product => (
-// //                             <tr key={product.id}>
-// //                                 <td>
-// //                                     <div className={styles.ProductsProductInfo}>
-// //                                         <img src={product.images[0]} alt={product.title} className={styles.ProductsProductImage} />
-// //                                         <span className={styles.ProductsProductName}>{product.title}</span>
-// //                                     </div>
-// //                                 </td>
-// //                                 <td>{product.price} 원</td>
-// //                                 <td>
-                                  
-// //                                     <button
-// //                                         onClick={() => this.handleEdit(product.id)}
-// //                                     >
-// //                                         수정
-// //                                     </button>
-// //                                 </td>
-// //                                 <td>
-// //                                     <button
-// //                                         onClick={() => this.handleDelete(product.id)}
-// //                                     >
-// //                                         삭제
-// //                                     </button>
-// //                                 </td>
-// //                             </tr>
-// //                         ))}
-// //                     </tbody>
-// //                 </table>
-// //             </div>
-// //         );
-// //     }
-// // }
-
-// // export default withRouter(Products); // HOC를 사용하여 navigate prop 전달
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React, { Component } from 'react';
-// import { useNavigate } from 'react-router-dom'; // useNavigate 훅 사용
+// import { useNavigate } from 'react-router-dom';
+// import axios from 'axios';
 // import styles from '../../styles/MyPage/Products.module.css';
 
-// // HOC: navigate prop을 클래스 컴포넌트에 전달
 // function withRouter(Component) {
 //     function ComponentWithRouterProp(props) {
 //         let navigate = useNavigate();
 //         return <Component {...props} navigate={navigate} />;
 //     }
-
 //     return ComponentWithRouterProp;
 // }
 
@@ -119,95 +15,19 @@
 //     constructor(props) {
 //         super(props);
 //         this.state = {
-//             products: [], // 등록한 상품 데이터 배열
+//             products: [],
+//             loading: true,
+//             error: null,
 //         };
 //     }
 
 //     componentDidMount() {
-//         const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-//         this.setState({ products: storedProducts.reverse() });
-//     }
-
-//     render() {
-//         return (
-//             <div className={styles.Products}>
-//                 <h2>등록한 상품</h2>
-//                 <table>
-//                     <thead>
-//                         <tr>
-//                             <th>상품</th>
-//                             <th>가격</th>
-//                             <th>수정</th>
-//                             <th>삭제</th>
-//                         </tr>
-//                     </thead>
-//                     <tbody>
-//                         {this.state.products.map(product => (
-//                             product ? ( // product가 null이 아닐 때만 렌더링
-//                                 <tr key={product.id}>
-//                                     <td>
-//                                         <div className={styles.ProductsProductInfo}>
-//                                             <span className={styles.ProductsProductName}>{product.title}</span>
-//                                         </div>
-//                                     </td>
-//                                     <td>{product.price} 원</td>
-//                                     <td>
-//                                         <button>
-//                                             수정
-//                                         </button>
-//                                     </td>
-//                                     <td>
-//                                         <button>
-//                                             삭제
-//                                         </button>
-//                                     </td>
-//                                 </tr>
-//                             ) : null // null일 경우 아무것도 렌더링하지 않음
-//                         ))}
-//                     </tbody>
-//                 </table>
-//             </div>
-//         );
-//     }
-// }
-
-// export default withRouter(Products); // HOC를 사용하여 navigate prop 전달
-
-
-
-
-// import React, { Component } from 'react';
-// import { useNavigate } from 'react-router-dom'; // useNavigate hook
-// import axios from 'axios'; // Ensure you have axios installed
-// import styles from '../../styles/MyPage/Products.module.css';
-
-// // HOC: navigate prop to class component
-// function withRouter(Component) {
-//     function ComponentWithRouterProp(props) {
-//         let navigate = useNavigate();
-//         return <Component {...props} navigate={navigate} />;
-//     }
-
-//     return ComponentWithRouterProp;
-// }
-
-// class Products extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             products: [], // Array to hold registered product data
-//             loading: true, // Loading state to indicate data fetching
-//             error: null, // State to hold error messages
-//         };
-//     }
-
-//     componentDidMount() {
-//         this.fetchProducts(); // Fetch products when component mounts
+//         this.fetchProducts(); // Fetch products on component mount
 //     }
 
 //     fetchProducts = async () => {
 //         try {
-//             const response = await axios.get('http://localhost:8080/'); // Adjust the URL according to your backend API
+//             const response = await axios.get('http://localhost:8080/'); 
 //             this.setState({ products: response.data.items.reverse(), loading: false });
 //         } catch (error) {
 //             console.error("Error fetching products:", error);
@@ -216,18 +36,16 @@
 //     }
 
 //     handleEdit = (productId) => {
-//         // Navigate to edit page (you need to implement the edit logic)
-//         this.props.navigate(`/edit/${productId}`);
+//         this.props.navigate(`/Edit-Products/${productId}`);
 //     }
 
-//     handleDelete = async (productId) => {
-//         // Add logic to delete the product
-//         try {
-//             await axios.delete(`/admin/item/${productId}`); // Adjust the URL accordingly
-//             this.fetchProducts(); // Refresh the product list after deletion
-//         } catch (error) {
-//             console.error("Error deleting product:", error);
-//             this.setState({ error: "Failed to delete product" });
+//     handleDelete = (productId) => {
+//         if (window.confirm("정말로 이 상품을 삭제하시겠습니까?")) {
+           
+//             this.setState((prevState) => ({
+//                 products: prevState.products.filter(product => product.id !== productId), 
+//             }));
+//             alert("상품이 삭제되었습니다."); 
 //         }
 //     }
 
@@ -256,7 +74,12 @@
 //                                 <tr key={product.id}>
 //                                     <td>
 //                                         <div className={styles.ProductsProductInfo}>
-//                                             <span className={styles.ProductsProductName}>{product.title}</span>
+//                                             <img 
+//                                                 src={`http://localhost:8080${product.imgUrl}`} 
+//                                                 alt={product.itemNm}
+//                                                 className={styles.ProductsProductImage}
+//                                             />
+//                                             <span className={styles.ProductsProductName}>{product.itemNm}</span>
 //                                         </div>
 //                                     </td>
 //                                     <td>{product.price} 원</td>
@@ -285,6 +108,21 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { Component } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -309,12 +147,12 @@ class Products extends Component {
     }
 
     componentDidMount() {
-        this.fetchProducts();
+        this.fetchProducts(); // Fetch products on component mount
     }
 
     fetchProducts = async () => {
         try {
-            const response = await axios.get('http://localhost:8080/'); // Adjust the URL
+            const response = await axios.get('http://localhost:8080/'); 
             this.setState({ products: response.data.items.reverse(), loading: false });
         } catch (error) {
             console.error("Error fetching products:", error);
@@ -323,18 +161,36 @@ class Products extends Component {
     }
 
     handleEdit = (productId) => {
-        this.props.navigate(`/edit/${productId}`);
+        this.props.navigate(`/Edit-Products/${productId}`);
     }
 
     handleDelete = async (productId) => {
-        try {
-            await axios.delete(`http://localhost:8080/${productId}`);
-            this.fetchProducts();
-        } catch (error) {
-            console.error("Error deleting product:", error);
-            this.setState({ error: "Failed to delete product" });
+        if (window.confirm("정말로 이 상품을 삭제하시겠습니까?")) {
+            const token = localStorage.getItem('token'); // JWT 토큰을 로컬 스토리지에서 가져오기
+    
+            try {
+                // 서버에 삭제 요청 보내기, 헤더에 토큰 추가
+                await axios.post(`http://localhost:8080/admin/item/delete/${productId}`, null, {
+                    headers: {
+                        Authorization: `Bearer ${token}`, // 인증을 위한 토큰 추가
+                    },
+                });
+    
+                // 업데이트된 제품 목록 상태 설정
+                this.setState((prevState) => ({
+                    products: prevState.products.filter(product => product.id !== productId),
+                }));
+                alert("상품이 삭제되었습니다."); 
+            } catch (error) {
+                console.error("Error deleting product:", error);
+                alert("상품 삭제 중 오류가 발생했습니다.");
+                if (error.response && error.response.status === 401) {
+                    alert("인증 정보가 없습니다. 다시 로그인해주세요.");
+                }
+            }
         }
     }
+    
 
     render() {
         const { products, loading, error } = this.state;
@@ -362,11 +218,11 @@ class Products extends Component {
                                     <td>
                                         <div className={styles.ProductsProductInfo}>
                                             <img 
-                                                src={`http://localhost:8080${product.imgUrl}`} // Ensure imgUrl is correct
-                                                alt={product.title}
+                                                src={`http://localhost:8080${product.imgUrl}`} 
+                                                alt={product.itemNm}
                                                 className={styles.ProductsProductImage}
                                             />
-                                            <span className={styles.ProductsProductName}>{product.title}</span>
+                                            <span className={styles.ProductsProductName}>{product.itemNm}</span>
                                         </div>
                                     </td>
                                     <td>{product.price} 원</td>
@@ -391,3 +247,4 @@ class Products extends Component {
 }
 
 export default withRouter(Products);
+
