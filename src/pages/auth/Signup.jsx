@@ -282,6 +282,7 @@ const Signup = () => {
         headers: { "Content-Type": "application/json" },
       });
       setSentCode(response.data);
+      console.log(response.data);
       alert('인증번호 발송');
     } catch (error) {
       alert(`Error sending code: ${error.response ? error.response.data : error.message}`);

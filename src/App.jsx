@@ -11,10 +11,7 @@ import CategoryPage from "./pages/ProductPage/CategoryPage";
 import Footer from "./components/footer/Footer";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
-
-
+import SellerProfile from './pages/seller/SellerProfile';
 import SearchResult from './components/header/SearchResult';
 
 
@@ -47,7 +44,7 @@ function App() {
         <Route path="/sell" element={<Sell />} />
         <Route path="/products/:id" element={<ProductDetail />} />
         <Route path="/category/:categoryName" element={<CategoryPage />} />
-        
+        <Route path="/seller-profile/:sellerNickname" element={<SellerProfile />} />
         
         <Route path="/search-results" element={<SearchResult />} />
         <Route path="/MyPage" element={<MyPage />} />

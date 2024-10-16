@@ -88,3 +88,80 @@ const Modal = ({ isOpen, onClose, children }) => {
 };
 
 export default Modal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useRef, useEffect, useState } from 'react';
+// import ReactDOM from 'react-dom';
+// import '../../styles/chat/Modal.css';
+// import axios from 'axios';
+
+// const Modal = ({ isOpen, onClose, memberId }) => {
+//   const modalRef = useRef(null);
+//   const [messages, setMessages] = useState([]);
+
+//   // Fetch all messages when the modal opens
+//   useEffect(() => {
+//     if (isOpen && memberId) {
+//       const fetchMessages = async () => {
+//         const token = localStorage.getItem('token');
+//         try {
+//           const response = await axios.get(`http://localhost:8080/members/${memberId}/chats/messages`, {
+//             headers: {
+//               Authorization: `Bearer ${token}`,
+//             },
+//           });
+//           setMessages(response.data);
+//         } catch (error) {
+//           console.error('Error fetching messages:', error);
+//         }
+//       };
+
+//       fetchMessages();
+//     }
+//   }, [isOpen, memberId]);
+
+//   if (!isOpen) return null;
+
+//   return ReactDOM.createPortal(
+//     <div className="modal-overlay">
+//       <div ref={modalRef} className="modal-content" role="dialog" aria-modal="true">
+//         <button className="modal-close" onClick={onClose}>
+//           ×
+//         </button>
+//         <div className="chat-messages">
+//           {messages.map((message) => (
+//             <div key={message.id} className="chat-message">
+//               <strong>{message.senderNickname}:</strong> {message.content}
+//             </div>
+//           ))}
+//         </div>
+//       </div>
+//     </div>,
+//     document.getElementById('modal-root')
+//   );
+// };
+
+// export default Modal;

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faGithub } from "@fortawesome/free-brands-svg-icons";
 import styles from "../../styles/footer/Footer.module.css";
 
-
 const teamMembers = [
   {
     id: 1,
@@ -48,10 +47,11 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.main}>
           <div className={styles.section}>
-            <h2 className={styles.subtitle}>Joongbu University</h2>
+            <h2 className={styles.subtitle}>사파리</h2>
             <ul className={styles.list}>
+              <li className={styles.item}>Joongbu University 정보보호학전공</li>
               <li className={styles.item}>주소: 10279 경기도 고양시 덕양구 동헌로 305</li>
-              <li className={styles.item}>전화: +82 031 8075 1000</li>
+              <li className={styles.item}>이메일: 2jm99@naver.com</li>
             </ul>
           </div>
           <div className={styles.section}>
