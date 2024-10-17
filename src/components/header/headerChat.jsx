@@ -406,35 +406,33 @@ const HeaderChat = () => {
   };
 
   const sendMessage = async () => {
-    if (!messageInput.trim()) return; // Don't send empty messages
-  
-    // memberId를 직접 가져옵니다.
-    const memberId = localStorage.getItem("memberId");
-  
-    // 메시지 객체를 만듭니다. 이제 memberId가 올바르게 설정됩니다.
+    if (!messageInput.trim()) return; // 빈 메시지는 보내지 않음
+    
+    const memberId = localStorage.getItem("memberId"); // localStorage에서 memberId 가져오기
+    
+    // 메시지 객체 생성
     const message = {
       roomId: selectedRoom,
-      memberId: memberId,
-      content: messageInput.trim(), // 메시지 내용을 추가합니다.
+      senderId: memberId, // 여기에 senderId를 추가
+      content: messageInput.trim(),
     };
   
-    // Check if WebSocket is connected
+    // WebSocket을 통해 메시지 전송
     if (webSocket && webSocket.readyState === WebSocket.OPEN) {
-      // Send the message over WebSocket
-      webSocket.send(JSON.stringify(message)); // WebSocket을 통해 JSON 형식으로 전송합니다.
-  
-      // 메시지를 즉시 업데이트 (senderName 추가)
+      webSocket.send(JSON.stringify(message)); // WebSocket을 통해 메시지 전송
+      
+      // 즉시 메시지 목록에 추가
       setMessages((prevMessages) => [
         ...prevMessages,
-        { senderName: 'You', content: messageInput }, // senderName을 추가
+        { senderId: memberId, content: messageInput, timestamp: new Date().toLocaleTimeString() }
       ]);
     } else {
-      // Send the message via REST API as a fallback
+      // WebSocket이 열려 있지 않으면 REST API로 메시지 전송
       const token = localStorage.getItem("token");
       try {
         const response = await axios.post(
           `http://localhost:8080/chat/${selectedRoom}/message`,
-          messageInput.trim(), // 여기서는 messageInput을 직접 보냅니다.
+          message, // message 객체를 전송
           {
             headers: {
               'Content-Type': 'application/json',
@@ -442,7 +440,7 @@ const HeaderChat = () => {
             },
           }
         );
-        // 메시지를 서버 응답으로 업데이트
+        // 서버 응답으로 메시지 업데이트
         setMessages((prevMessages) => [...prevMessages, response.data]);
       } catch (error) {
         console.error("Error sending message via REST API:", error);
@@ -450,7 +448,7 @@ const HeaderChat = () => {
       }
     }
   
-    setMessageInput(""); // Clear the input
+    setMessageInput(""); // 입력 필드 초기화
   };
   
 

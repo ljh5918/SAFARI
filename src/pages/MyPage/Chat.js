@@ -599,25 +599,45 @@ const Message = ({ message, isSent }) => {
   );
 };
 
+// const MessageList = ({ messages }) => {
+//   const memberId = localStorage.getItem("memberId"); // 로컬 스토리지에서 memberId 가져오기
+//   console.log("로그인한 계정 memberid:", memberId);
+
+//   return (
+//     <div className={styles.chatMessages}>
+//       {messages.map((message, index) => {
+//         console.log("메세지 보내는 사람 senderid: ", message.senderId); // message에서 senderId를 가져옴
+//         return (
+//           <Message
+//             key={index}
+//             message={message}
+//             isSent={message.senderId === memberId} // senderId가 memberId와 같으면 오른쪽, 아니면 왼쪽
+//           />
+//         );
+//       })}
+//     </div>
+//   );
+// };
+
+
+
+
 const MessageList = ({ messages }) => {
   const memberId = localStorage.getItem("memberId"); // 로컬 스토리지에서 memberId 가져오기
-  console.log("메세지 받는 사람:", memberId);
 
   return (
     <div className={styles.chatMessages}>
-      {messages.map((message, index) => {
-        console.log("메세지 보내는 사람 : ", message.senderId); // message에서 senderId를 가져옴
-        return (
-          <Message
-            key={index}
-            message={message}
-            isSent={message.senderId === memberId} // senderId가 memberId와 같으면 오른쪽, 아니면 왼쪽
-          />
-        );
-      })}
+      {messages.map((message, index) => (
+        <Message
+          key={index}
+          message={message}
+          isSent={message.senderId === memberId} // senderId와 memberId 비교
+        />
+      ))}
     </div>
   );
 };
+
 
 const InputArea = ({ messageInput, setMessageInput, sendMessage }) => {
   return (
