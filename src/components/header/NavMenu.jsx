@@ -32,7 +32,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../chat/Modal';
-import Chat from '../../pages/MyPage/Chat';
+// import Chat from '../../pages/MyPage/Chat';
+import HeaderChat from './headerChat';
 import styles from '../../styles/header/Header.module.css';
 
 const NavMenu = ({ scrollToTop }) => {
@@ -70,7 +71,7 @@ const NavMenu = ({ scrollToTop }) => {
       </a>
 
       <Modal isOpen={isChatroomOpen} onClose={closeChatroom}>
-        <Chat />
+        <HeaderChat />
       </Modal>
     </div>
   );

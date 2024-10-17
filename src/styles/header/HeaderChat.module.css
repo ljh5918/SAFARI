@@ -1,0 +1,48 @@
+/* HeaderChat.module.css */
+
+.headerChat {
+  background-color: #fff; 
+  padding: 20px; 
+  border-radius: 8px; 
+}
+
+.chatlist {
+  font-size: 2.2rem; /* Larger font for the title */
+  margin-bottom: 25px; /* Space below the title */
+  color: #333; /* Dark color for text */
+}
+
+.roomList {
+  list-style: none; /* Remove bullets */
+  padding: 1; /* Remove padding */
+  margin: 0; /* Remove margin */
+}
+
+.room {
+  display: flex; 
+  align-items: center; 
+  padding: 20px; /* Add padding to room items */
+  margin: 5px 0; /* Space between items */
+  background-color: #f9f9f9; /* Light background for room items */
+  border: 1px solid #ddd; /* Border around room items */
+  border-radius: 4px; /* Slightly round corners */
+  cursor: pointer; /* Indicate that the item is clickable */
+ 
+}
+
+.room:hover {
+  background-color: #e0e0e0; /* Change background on hover */
+}
+
+.roomIconWrapper {
+  margin-right: 30px; /* Space between icon and text */
+}
+
+.icon {
+  font-size: 1.6rem; /* Adjust icon size */
+}
+
+.error {
+  color: red; /* Color for error messages */
+  margin-top: 10px; /* Space above the error message */
+}

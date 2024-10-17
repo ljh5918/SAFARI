@@ -19,7 +19,7 @@ import MyPage from './pages/MyPage/MyPage';
 import UserProfile from './pages/MyPage/UserProfile'; 
 import Chat from './pages/MyPage/Chat';
 import EditProduct from './pages/MyPage/EditProducts';
-// import FindId from './pages/auth/FindId';
+
 
 
 function App() {
@@ -53,7 +53,7 @@ function App() {
         <Route path="/Edit-Products/:id" element={<EditProduct />} />
         <Route path="/Product" element={<> <Home /> <Product /> </>} />
         {/* <Route path="/FindId" element={<FindId />} /> */}
-
+        
       </Routes>
       <Footer />
     </Router>
@@ -61,3 +61,30 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react';
+// import TestChat from './pages/MyPage/chattest'; // Adjust the path accordingly
+
+// const App = () => {
+//   return (
+//     <div>
+//       <TestChat />
+//     </div>
+//   );
+// };
+
+// export default App;
