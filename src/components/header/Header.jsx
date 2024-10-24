@@ -4,7 +4,7 @@ import Logo from './Logo';
 import SearchBar from './SearchBar';
 import NavMenu from './NavMenu';
 import AuthButton from './AuthButton';
-import Category from './Category';
+// import Category from './Category';
 
 const Header = () => {
   const [showCategories, setShowCategories] = useState(false);
@@ -25,9 +25,9 @@ const Header = () => {
         <NavMenu scrollToTop={scrollToTop} />
         <AuthButton scrollToTop={scrollToTop} />
       </div>
-      <div className={styles.categoryContainer}>
+      {/* <div className={styles.categoryContainer}>
         <Category showCategories={showCategories} setShowCategories={setShowCategories} />
-      </div>
+      </div> */}
     </header>
   );
 };

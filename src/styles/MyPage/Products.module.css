@@ -1,109 +1,4 @@
-/* 
-.Products {
-    text-align: center;
-  }
-  
-  .Products h2 {
-    margin-bottom: 70px;
-    text-align: left;
-    font-size: 30px;
-    color: #ff5757;
-  }
-  
-  .Products table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  
-  .Products th, .like td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
-    position: relative; 
-  }
-  
-  
-
-  .Products td, .Products th {
-    border-bottom: 1px solid #ddd; 
-  }
-  
-  .Products td {
-    border-right: 1px solid #ddd; 
-  }
-  
-  .Products td:last-child {
-    border-right: none; 
-  }
-  
-  .ProductsProductInfo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .ProductsProductImage {
-    width: 100px;
-    height: auto;
-    margin-right: 10px;
-    margin: 10px;
-  }
-  
-  .ProductsProductName {
-    margin: 0;
-    text-align: center; 
-  }
-
-  
-  .Products th:first-child, .Products td:first-child {
-    width: 75%;
-  }
-  .Products th:nth-child(2), .Products td:nth-child(2) {
-    width: 15%;
-  }
-  .Products th:last-child, .Products td:last-child {
-    width: 10%;
-  }
-
-
-.editButton {
-  padding: 8px 12px;
-  background-color: #ff5757; 
-  color: white; 
-  border: none; 
-  border-radius: 4px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 15px; 
-  cursor: pointer; 
-  transition-duration: 0.4s; 
-}
-
-.editButton:hover {
-  background-color: #e53935;
-}
-
- 
-.Products .editButton, .Products .deleteButton {
-  padding: 8px 12px;
-  background-color: #ff5757; 
-  color: white; 
-  border: none; 
-  border-radius: 4px; 
-  text-align: center; 
-  text-decoration: none; 
-  display: inline-block; 
-  font-size: 15px; 
-  cursor: pointer; 
-  transition-duration: 0.4s; 
-}
-
-.Products .editButton:hover, .Products .deleteButton:hover {
-  background-color: #e53935;
-} */
-
-
+/* Products.module.css */
 
 .Products {
   width: 100%;
@@ -126,6 +21,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  table-layout: fixed; /* 테이블 레이아웃을 고정 */
 }
 
 thead {
@@ -136,6 +32,8 @@ th, td {
   padding: 12px 15px;
   text-align: center;
   border-bottom: 1px solid #ddd;
+  vertical-align: middle; /* 수직 중앙 정렬 */
+  white-space: nowrap;
 }
 
 th {
@@ -147,6 +45,7 @@ tbody tr:hover {
   background-color: #f5f5f5;
 }
 
+/* 상품 정보 - 이미지와 이름 */
 .ProductsProductInfo {
   display: flex;
   align-items: center;
@@ -160,13 +59,12 @@ tbody tr:hover {
   border-radius: 4px;
 }
 
-
 .ProductsProductName {
   display: inline-block;
-  max-width: 200px; /* 상품명 길이 제한 */
-  white-space: nowrap; /* 한 줄로 고정 */
-  overflow: hidden; /* 넘치는 텍스트 숨김 */
-  text-overflow: ellipsis; /* ... 으로 표시 */
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 가격 칸 */
@@ -177,6 +75,73 @@ td:nth-child(2) {
   text-overflow: ellipsis;
 }
 
+/* 버튼들이 가로로 나열되도록 설정 */
+td:nth-child(3), td:nth-child(4), td:nth-child(5) {
+  text-align: center; /* 버튼을 가로로 배치 */
+  white-space: nowrap;
+}
 
+td button {
+  display: inline-block; /* 버튼을 인라인 블록으로 배치 */
+  margin: 0 5px; /* 버튼 사이 간격 */
+  padding: 8px 1px;
+  border: none;
+  border-radius: 4px;
+  background-color: #ff5757;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 90px; /* 버튼 너비를 고정 */
+  text-align: center; /* 버튼 텍스트 가운데 정렬 */
+}
 
+td button:hover {
+  background-color: #e04848;
+}
 
+td button:active {
+  background-color: #c93c3c;
+}
+
+.editButton {
+  background-color: #4CAF50;
+}
+
+.editButton:hover {
+  background-color: #45a049;
+}
+
+.deleteButton {
+  background-color: #f44336;
+}
+
+.deleteButton:hover {
+  background-color: #da190b;
+}
+
+.soldOutButton {
+  background-color: #555555;
+  min-width: 90px;
+}
+
+.soldOutButton:hover {
+  background-color: #333333;
+}
+
+/* 기존 스타일 유지 */
+.ProductsProductImageWrapper {
+  position: relative;
+}
+
+.soldLabel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 10;
+  font-size: 14px;
+}

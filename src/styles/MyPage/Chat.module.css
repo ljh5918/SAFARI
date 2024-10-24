@@ -6,58 +6,92 @@
   margin: 0;
   border: none;
   border-radius: 8px; 
-  background-color: #fff;
-  overflow: hidden; 
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+  background-color: #f8f9fa; /* Chat background color */
 }
+
+
 
 .chatTitle {
   padding: 15px; 
-  background-color: #ff5757; /* Light background for the title */
+  background-color: #ff5757; /* Title background color */
   border-bottom: 1px solid #ccc; /* Separator line */
   text-align: center; 
   font-weight: bold; 
   font-size: 20px; 
+  white-space: nowrap; /* Prevent title from wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Ellipsis for overflowed text */
+  position: sticky; /* Make the title sticky */
+  top: 0; /* Stick to the top */
+  z-index: 1; /* Ensure it stays above other elements */
 }
 
 .chatMessages {
-  flex: 1;
-  overflow-y: auto; 
+  flex: 1; /* Take the remaining space */
+  overflow-y: auto; /* Only the messages area should scroll */
   padding: 10px;
   display: flex;
   flex-direction: column; 
+  margin-top: 0; /* Remove any margin to align with title */
+  /* To prevent horizontal scrolling */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in width */
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.messageWrapper {
+  display: flex;
+  align-items: flex-end; /* Align items at the bottom */
+  margin-bottom: 10px; /* Space between message wrappers */
+}
+
+.sentWrapper {
+  justify-content: flex-end; /* Align sent messages to the right */
+}
+
+.receivedWrapper {
+  justify-content: flex-start; /* Align received messages to the left */
 }
 
 .message {
-  display: flex;
-  margin-bottom: 10px; 
+  max-width: 70%; /* Maximum width of message balloons */
+  padding: 10px; /* Padding inside the message */
+  border-radius: 15px; /* Rounded corners for message balloon */
+  position: relative;
 }
+
+.sent {
+  background-color: #dcf8c6; /* Background color for sent messages */
+  color: #000; /* Text color for sent messages */
+  margin-left: 10px; /* Space for the timestamp */
+}
+
+
+.sentTime {
+  font-size: 10px; /* Font size for sent time */
+  color: #aaa; /* Color for sent time */
+  margin-right: 5px; /* Space between the timestamp and the message */
+}
+
+.receivedTime {
+  font-size: 10px; /* Font size for received time */
+  color: #aaa; /* Color for received time */
+  margin-left: 5px; /* Space between the timestamp and the message */
+  align-self: flex-end;
+}
+
+.received {
+  background-color: #fff; /* Background color for received messages */
+  color: #000; /* Text color for received messages */
+  margin-right: 10px; /* Space for the timestamp */
+}
+
 
 .messageContent {
-  padding: 12px;
-  border-radius: 10px; /* Added border radius for message bubbles */
-  max-width: 70%; /* Adjust the width limit */
-  position: relative; 
-  word-wrap: break-word; /* Ensure long words break correctly */
+  position: relative;
+  word-wrap: break-word;
 }
 
-.sent { 
-  align-self: flex-end; /* Align sent messages to the right */
-  background-color: #d1f0d1; /* Light green for sent messages */
-}
-
-.received { 
-  align-self: flex-start; /* Align received messages to the left */
-  background-color: #f0d1d1; /* Light red for received messages */
-}
-
-.messageTime {
-  position: absolute;
-  right: 5px; /* Adjusted position for better visibility */
-  bottom: -15px; /* Adjusted position for better visibility */
-  color: #999; 
-  font-size: 12px; 
-}
 
 .inputWrapper {
   display: flex; 
@@ -99,9 +133,4 @@
   background-color: #e53935;
 }
 
-/* Responsive design */
-@media (max-width: 600px) {
-  .chatContainer {
-    width: 100%; /* Make chat container full width on smaller screens */
-  }
-}
+

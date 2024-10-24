@@ -323,7 +323,10 @@ const Signup = () => {
           },
         }
       );
-  
+      const memberId = response.data.memberId;
+      localStorage.setItem("memberid:", memberId);
+      console.log(memberId);
+
       console.log('가입 성공', response.data);
       navigate('/auth'); // 가입 성공 후 리다이렉트
     } catch (error) {

@@ -212,10 +212,11 @@ const Login = () => {
         email: formData.id,
         password: formData.password
       });
+      
 
       // Storing JWT token and memberId in localStorage
       localStorage.setItem('token', response.data.token);
-      // localStorage.setItem('memberId', response.data.memberId); // Store memberId
+      localStorage.setItem('memberId', response.data.memberId); // Store memberId
       console.log(response.data.token); // 토큰 확인
       localStorage.setItem('isLoggedIn', 'true'); 
       
@@ -226,6 +227,10 @@ const Login = () => {
       setFormData({ id: '', password: '' });
     }
   };
+
+
+
+
 
   const handlePasswordFind = async () => {
     try {
