@@ -3,7 +3,7 @@ import styles from '../../styles/header/Header.module.css';
 import Logo from './Logo';
 import SearchBar from './SearchBar';
 import NavMenu from './NavMenu';
-import AuthButton from './AuthButton';
+// import AuthButton from './AuthButton';
 // import Category from './Category';
 
 const Header = () => {
@@ -23,7 +23,7 @@ const Header = () => {
        
         <SearchBar scrollToTop={scrollToTop}/>
         <NavMenu scrollToTop={scrollToTop} />
-        <AuthButton scrollToTop={scrollToTop} />
+        {/* <AuthButton scrollToTop={scrollToTop} /> */}
       </div>
       {/* <div className={styles.categoryContainer}>
         <Category showCategories={showCategories} setShowCategories={setShowCategories} />

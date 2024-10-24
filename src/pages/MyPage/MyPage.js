@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Link 컴포넌트 import
 import Bar from './Bar'; 
 import Sale from './Sale'; 
-import Purchase from './Purchase'; 
+// import Purchase from './Purchase'; 
 import Like from './Like'; 
 import Products from './Products';
 import UserProfile from './UserProfile'; // UserProfile 컴포넌트 import
@@ -60,14 +60,14 @@ const MyPage = () => {
       <div className={styles.profileButtons}>
         <button className={`${styles.sectionButton} ${activeSection === 'Products' ? styles.active : ''}`} onClick={() => showSection('Products')}>등록한 상품</button>
         <button className={`${styles.sectionButton} ${activeSection === 'Sale' ? styles.active : ''}`} onClick={() => showSection('Sale')}>판매내역</button>
-        <button className={`${styles.sectionButton} ${activeSection === 'Purchase' ? styles.active : ''}`} onClick={() => showSection('Purchase')}>구매내역</button>
+        {/* <button className={`${styles.sectionButton} ${activeSection === 'Purchase' ? styles.active : ''}`} onClick={() => showSection('Purchase')}>구매내역</button> */}
         <button className={`${styles.sectionButton} ${activeSection === 'Like' ? styles.active : ''}`} onClick={() => showSection('Like')}>찜한 상품</button>
       </div>
 
       <div className={styles.content}>
         {activeSection === 'Products' && <Products />}
         {activeSection === 'Sale' && <Sale />}
-        {activeSection === 'Purchase' && <Purchase />}
+        {/* {activeSection === 'Purchase' && <Purchase />} */}
         {activeSection === 'Like' && <Like />}
       </div>
     </div>

@@ -167,40 +167,40 @@
 
 // export default AuthButton;
 
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../../styles/AuthButton/AuthButton.css';
+// import React, { useState, useEffect } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import '../../styles/AuthButton/AuthButton.css';
 
-const AuthButton = ({ scrollToTop }) => {
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
-  const navigate = useNavigate();
+// const AuthButton = ({ scrollToTop }) => {
+//   const isLoggedIn = localStorage.getItem('isLoggedIn');
+//   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // 로그아웃 처리: 로컬 스토리지에서 로그인 상태 제거
-    localStorage.removeItem('isLoggedIn');
-    navigate("/"); // 로그아웃 시 메인 페이지로
-  };
+//   const handleLogout = () => {
+//     // 로그아웃 처리: 로컬 스토리지에서 로그인 상태 제거
+//     localStorage.removeItem('isLoggedIn');
+//     navigate("/"); // 로그아웃 시 메인 페이지로
+//   };
 
-  const GoToMyPage = () => {
-    navigate("/MyPage"); // Ensure the path starts with '/MyPage'
-  };
+//   const GoToMyPage = () => {
+//     navigate("/MyPage"); // Ensure the path starts with '/MyPage'
+//   };
 
-  return (
-    <div className="auth-button f_flex">
-      {isLoggedIn ? (
-        <>
-          {/* 로그인 상태일 때 마이페이지와 로그아웃 버튼 */}
-          <button onClick={GoToMyPage} className="btn">마이페이지</button>
-          <button onClick={handleLogout} className="btn">로그아웃</button>
-        </>
-      ) : (
-        <>
-          {/* 비로그인 상태일 때 로그인/회원가입 버튼 */}
-          <Link to="/auth" className="btn">로그인/회원가입</Link>
-        </>
-      )}
-    </div>
-  );
-};
+//   return (
+//     <div className="auth-button f_flex">
+//       {isLoggedIn ? (
+//         <>
+//           {/* 로그인 상태일 때 마이페이지와 로그아웃 버튼 */}
+//           <button onClick={GoToMyPage} className="btn">마이페이지</button>
+//           <button onClick={handleLogout} className="btn">로그아웃</button>
+//         </>
+//       ) : (
+//         <>
+//           {/* 비로그인 상태일 때 로그인/회원가입 버튼 */}
+//           <Link to="/auth" className="btn">로그인/회원가입</Link>
+//         </>
+//       )}
+//     </div>
+//   );
+// };
 
-export default AuthButton;
+// export default AuthButton;
