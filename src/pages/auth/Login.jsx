@@ -287,10 +287,10 @@ const Login = () => {
           <button className={styles.loginbtn} type='submit'>로그인</button>
         </form>
         <div className={styles.signuplink}>
-          <a href="#" onClick={goTosignup}>회원가입</a>
-          <a href="#" onClick={() => setShowModal(true)}>비밀번호 찾기</a> {/* 비밀번호 찾기 버튼 */}
+          <a href="#" onClick={goTosignup}>회원가입/</a> 
+          <a href="#" onClick={() => setShowModal(true)}> 비밀번호 찾기</a> {/* 비밀번호 찾기 버튼 */}
         </div>
-        <p className={styles.snstitle}>---------------------------   소셜 로그인   ---------------------------</p>
+        {/* <p className={styles.snstitle}>---------------------------   소셜 로그인   ---------------------------</p>
         <div className={styles.snsbtn}>
           <button className={styles.kakaologinbtn} type='button' onClick={KakaoLogin}>
             <img src={kakaoimg} alt="카카오로그인" />
@@ -298,7 +298,7 @@ const Login = () => {
           <button className={styles.naverloginbtn} type='button' onClick={NaverLogin}>
             <img src={naverimg} alt="네이버 아이디 로그인" />
           </button>
-        </div>
+        </div> */}
       </div>
 
       {/* 비밀번호 찾기 모달 */}

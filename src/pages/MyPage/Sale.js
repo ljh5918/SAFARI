@@ -39,9 +39,20 @@ class Sale extends Component {
                     Authorization: `Bearer ${token}`,
                 },
             });
-
+    
+            // 서버에서 받은 데이터를 날짜 형식을 변환하여 상태에 저장
+            const saleData = response.data.orders.map(order => {
+                const correctedDate = order.orderDate.replace(/(\d{4})-(\d{2})-(\d{2})/, (match, year, month, day) => {
+                    // month는 1-12이므로, 잘못된 month 값을 조정합니다.
+                    const correctedMonth = month > 12 ? 12 : month;
+                    const correctedDay = day > 31 ? 31 : day; // day의 유효성을 체크할 수도 있음
+                    return `${year}-${correctedMonth}-${correctedDay}`;
+                });
+                return { ...order, orderDate: correctedDate };
+            });
+    
             this.setState({
-                sale: response.data.orders,
+                sale: saleData,
                 loading: false,
                 error: null,
             });
@@ -52,7 +63,7 @@ class Sale extends Component {
             });
         }
     }
-
+    
     render() {
         const { sale, loading, error } = this.state;
 

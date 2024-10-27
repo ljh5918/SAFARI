@@ -50,7 +50,7 @@ const ProductDetail = () => {
 
       if (memberId) {
         setMemberId(memberId);
-        setSenderId(memberId); // Initialize senderId
+        setSenderId(memberId); 
       } else {
         try {
           const response = await axios.get(`http://localhost:8080/members/myInfo`, {
@@ -185,9 +185,9 @@ const ProductDetail = () => {
           <h1>{product.itemNm}</h1>
           <div className={styles.productPrice}>{product.price} 원</div>
           <div className={styles.productStats}>
-            <span>{liked ? '❤️' : '🤍'} {likes}</span>
-            <span>조회수 {product.views || 0}</span>
-            <span>등록시간 {new Date(product.regTime).toLocaleString()}</span>
+            {/* <span>{liked ? '❤️' : '🤍'} {likes}</span> */}
+            {/* <span>조회수 {product.views || 0}</span> */}
+            {/* <span>등록시간 {new Date(product.regTime).toLocaleString()}</span> */}
           </div>
           <div className={styles.actionButtons}>
             <button className={styles.likeButton} onClick={handleLike}>
@@ -249,3 +249,43 @@ const ProductDetail = () => {
 };
 
 export default ProductDetail;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
