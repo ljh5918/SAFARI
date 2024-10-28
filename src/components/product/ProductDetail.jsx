@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import styles from "../../styles/product/ProductDetail.module.css";
-import Chat from '../../pages/MyPage/Chat'; // Chat component
-import Modal from '../chat/Modal'; // Modal component
+import Chat from '../../pages/MyPage/Chat';
+import Modal from '../chat/Modal';
+import { FaHeart, FaComment } from 'react-icons/fa'; 
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -21,7 +21,7 @@ const ProductDetail = () => {
   const [messageInput, setMessageInput] = useState('');
   const [senderId, setSenderId] = useState(null);
 
-  // Fetch product and member info
+  
   useEffect(() => {
     const fetchProduct = async () => {
       const token = localStorage.getItem('token');
@@ -36,7 +36,10 @@ const ProductDetail = () => {
 
         setProduct({ ...productData, imgUrl: mainImage });
         setLikes(productData.likes || 0);
-        setLiked(productData.liked || false);
+
+        
+        const likedStatus = localStorage.getItem(`liked-${id}`);
+        setLiked(likedStatus === 'true');
       } catch (error) {
         handleError(error, '상품을 불러오는 중 오류가 발생했습니다.');
       } finally {
@@ -95,8 +98,12 @@ const ProductDetail = () => {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setLiked(!liked);
-      setLikes(liked ? likes - 1 : likes + 1);
+      const newLikedStatus = !liked;
+      setLiked(newLikedStatus);
+      setLikes(newLikedStatus ? likes + 1 : likes - 1);
+
+      
+      localStorage.setItem(`liked-${id}`, newLikedStatus);
     } catch (error) {
       console.error('Error handling like:', error);
     }
@@ -118,13 +125,13 @@ const ProductDetail = () => {
       if (chatRoomData?.roomId) {
         setRoomId(chatRoomData.roomId);
 
-        // Fetch previous messages
+        
         const messageResponse = await axios.get(`http://localhost:8080/chat/${chatRoomData.roomId}/messages`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setMessages(messageResponse.data);
 
-        // Set up WebSocket connection
+       
         const socket = new WebSocket(`ws://localhost:8080/ws/${chatRoomData.roomId}/${memberId}?token=${token}`);
         socket.onopen = () => console.log('WebSocket connected');
         socket.onmessage = (event) => {
@@ -163,6 +170,20 @@ const ProductDetail = () => {
     setMessageInput('');
   };
 
+  
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        handleCloseChat();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -190,10 +211,24 @@ const ProductDetail = () => {
             {/* <span>등록시간 {new Date(product.regTime).toLocaleString()}</span> */}
           </div>
           <div className={styles.actionButtons}>
-            <button className={styles.likeButton} onClick={handleLike}>
-              {liked ? '찜 취소' : '찜하기'}
+            <button
+              className={styles.likeButton}
+              onClick={handleLike}
+              style={{
+                backgroundColor: liked ? '#333' : 'gray',
+                // color: 'white',
+                // padding: '10px 20px',
+                // border: 'none',
+                // borderRadius: '5px',
+                // cursor: 'pointer',
+              }}
+            >
+             <FaHeart style={{ color: liked ? 'red' : 'white' }} /> 
+             {liked ? '찜' : '찜'}
             </button>
-            <button className={styles.chatButton} onClick={handleOpenChat}>채팅하기</button>
+            <button className={styles.chatButton} onClick={handleOpenChat}>
+              <FaComment /> 채팅하기
+            </button>
           </div>
         </div>
       </div>
@@ -203,60 +238,27 @@ const ProductDetail = () => {
           <h2 className={styles.sectionTitle}>상품 정보</h2>
           <p>{product.itemDetail || '상세 설명이 없습니다.'}</p>
         </div>
-        {/* <div className={styles.storeProfileWrapper}>
-          <h2 className={styles.sectionTitle}>판매자 상점</h2>
-          <div className={styles.storeProfile}>
-            <div className={styles.profileInfo}>
-              <Link to={`/Seller-Profile/${product.sellerNickname}`} className={styles.profilePic}>
-                <i className={`${styles.icon} fas fa-store`}></i>
-              </Link>
-              <div className={styles.storeName}>{product.sellerNickname || '판매자 닉네임'}</div>
-            </div>
-          </div>
-        </div> */}
+       
       </div>
 
-      {/* <div className={styles.relatedProducts}>
-        <h2 className={styles.sectionTitle}>연관 상품</h2>
-        <div className={styles.relatedProductList}>
-          {product.relatedProducts?.map((relatedProduct) => (
-            <div key={relatedProduct.id} className={styles.relatedProductItem}>
-              <Link to={`/product/${relatedProduct.id}`}>
-                <img src={`http://localhost:8080${relatedProduct.imgUrl}`} alt={relatedProduct.itemNm} />
-                <div className={styles.relatedProductName}>{relatedProduct.itemNm}</div>
-                <div className={styles.relatedProductPrice}>{relatedProduct.price} 원</div>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div> */}
-
       {isChatOpen && (
-          <Modal isOpen={isChatOpen} onClose={handleCloseChat}>
-                    <Chat 
-                      roomId={roomId}
-                      messages={messages} 
-                      messageInput={messageInput} 
-                      setMessageInput={setMessageInput} 
-                      sendMessage={sendMessage} 
-                      senderId={senderId} // Pass senderId to Chat component
-                      productTitle={product.itemNm} // Pass the product title to Chat
-                    />
-                  </Modal>
+        <Modal isOpen={isChatOpen} onClose={handleCloseChat}>
+          <Chat 
+            roomId={roomId}
+            messages={messages} 
+            messageInput={messageInput} 
+            setMessageInput={setMessageInput} 
+            sendMessage={sendMessage} 
+            senderId={senderId} 
+            productTitle={product.itemNm} 
+          />
+        </Modal>
       )}
     </div>
   );
 };
 
 export default ProductDetail;
-
-
-
-
-
-
-
-
 
 
 

@@ -2,24 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Link 컴포넌트 import
 import Bar from './Bar'; 
 import Sale from './Sale'; 
-// import Purchase from './Purchase'; 
 import Like from './Like'; 
-import Products from './Products';
-import UserProfile from './UserProfile'; // UserProfile 컴포넌트 import
+import Products from './MyProducts';
+import UserProfile from './UserProfile'; 
 import styles from '../../styles/MyPage/MyPage.module.css';
 
 const MyPage = () => {
   const [activeSection, setActiveSection] = useState('Products');
-  const [userId, setUserId] = useState(''); // 초기값은 빈 문자열
+  const [userId, setUserId] = useState(''); 
 
-  // 로그인 시 백엔드 서버에서 닉네임을 가져옴
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const response = await fetch('http://localhost:8080/members/myInfo', {
           method: 'GET',
           headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`, // JWT 토큰 헤더에 추가
+            'Authorization': `Bearer ${localStorage.getItem('token')}`, 
             'Content-Type': 'application/json',
           },
         });
@@ -29,7 +28,7 @@ const MyPage = () => {
           setUserId(data.name); 
         } else {
           console.error('Error fetching user info:', response.statusText);
-          // 필요 시 사용자에게 에러 메시지 표시
+       
         }
       } catch (error) {
         console.error('Error fetching user info:', error);

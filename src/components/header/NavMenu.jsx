@@ -1,12 +1,3 @@
-
-
-
-
-
-
-
-
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../chat/Modal';
@@ -16,15 +7,14 @@ import styles from '../../styles/header/Header.module.css';
 const NavMenu = ({ scrollToTop }) => {
   const [isChatroomOpen, setChatroomOpen] = useState(false);
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; // Check login status
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true'; 
 
   const openChatroom = (e) => {
-    e.preventDefault(); // Prevent default behavior
-    console.log("채팅하기 버튼 클릭됨"); // Debug log
+    e.preventDefault(); 
+    console.log("채팅하기 버튼 클릭됨"); 
     if (isLoggedIn) {
       setChatroomOpen(true);
     } else {
-      // Set flag to open chat after login
       localStorage.setItem('openChatAfterLogin', 'true');
       navigate('/auth');
     }
@@ -33,9 +23,8 @@ const NavMenu = ({ scrollToTop }) => {
   const closeChatroom = () => setChatroomOpen(false);
 
   const handleLogout = () => {
-    // Logout handling: remove login status from local storage
     localStorage.removeItem('isLoggedIn');
-    navigate("/"); // Navigate to the main page after logout
+    navigate("/"); 
   };
 
   useEffect(() => {
@@ -53,7 +42,7 @@ const NavMenu = ({ scrollToTop }) => {
         채팅하기
       </a>
 
-      {/* Auth buttons integrated here */}
+     
       {isLoggedIn ? (
         <>
           <Link to="/MyPage" className={styles.button}>내상점</Link>

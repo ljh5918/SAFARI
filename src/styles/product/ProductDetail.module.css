@@ -1,124 +1,4 @@
-/* .productDetail {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.productInfo {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-}
-
-.productImage img {
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin-right: 20px;
-}
-
-.productContent {
-  flex: 1;
-  padding: 20px;
-}
-
-.productContent h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.productPrice {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.productStats {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.productDescription {
-  margin-top: 20px;
-}
-
-.actionButtons {
-  display: flex;
-  justify-content: flex-start;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.actionButtons button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.likeButton {
-  background-color: #ff5757;
-  color: white;
-}
-
-.chatButton {
-  background-color: #ff5757;
-  color: white;
-}
-
-.relatedProducts {
-  margin-top: 40px;
-}
-
-.relatedProductList {
-  display: flex;
-  gap: 20px;
-}
-
-.relatedProduct {
-  width: 150px;
-  text-align: center;
-}
-
-.relatedProduct img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
-.relatedProduct p {
-  margin: 10px 0 5px;
-  font-size: 14px;
-}
-
-.relatedProduct span {
-  font-size: 14px;
-  font-weight: bold;
-  color: #ff5757;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- */
-
-
- /* 종민 */
- /* src/styles/product/ProductDetail.module.css */
-
+ 
 .productDetail {
   max-width: 800px;
   margin: 0 auto;
@@ -137,14 +17,23 @@
 }
 
 .productImage {
-  position: relative;
+  width: 300px; /* Fixed width for the container */
+  height: 400px; /* Fixed height for the container */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 10px; /* Rounded corners */
+  position: relative; /* Necessary for positioning */
 }
 
 .productImage img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
+  width: 100%; /* Fill the container width */
+  height: 100%; /* Fill the container height */
+  object-fit: cover; /* Maintain aspect ratio and fill the container */
 }
+
+
+
+
+
 
 .productContent {
   flex: 1;

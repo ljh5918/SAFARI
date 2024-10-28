@@ -9,10 +9,10 @@ const Modal = ({ isOpen, onClose, children, scrollable = true, isChatRoomActive 
 
   useEffect(() => {
     const body = document.body;
-    body.style.overflow = isOpen && !isChatRoomActive ? 'hidden' : 'auto'; // Disable scroll when modal is open and not in chat room
+    body.style.overflow = isOpen && !isChatRoomActive ? 'hidden' : 'auto'; 
 
     return () => {
-      body.style.overflow = 'auto'; // Cleanup
+      body.style.overflow = 'auto'; 
     };
   }, [isOpen, isChatRoomActive]);
 
@@ -59,7 +59,7 @@ const Modal = ({ isOpen, onClose, children, scrollable = true, isChatRoomActive 
             className="modal-content"
             ref={modalRef}
             onClick={(e) => e.stopPropagation()}
-            style={{ overflowY: scrollable && !isChatRoomActive ? 'auto' : 'hidden' }} // Disable scroll if in chat room
+            style={{ overflowY: scrollable && !isChatRoomActive ? 'auto' : 'hidden' }}
           >
             <button className="modal-close" onClick={onClose}>
               &times;
@@ -73,3 +73,23 @@ const Modal = ({ isOpen, onClose, children, scrollable = true, isChatRoomActive 
 };
 
 export default Modal;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
   margin: 0;
   border: none;
   border-radius: 8px; 
-  background-color: #f8f9fa; /* Chat background color */
+  background-color: #f8f9fa; 
 }
 
 
@@ -27,6 +27,7 @@
 }
 
 .chatMessages {
+  max-height: 510px;
   flex: 1; /* Take the remaining space */
   overflow-y: auto; /* Only the messages area should scroll */
   padding: 10px;
@@ -132,5 +133,6 @@
 .sendButton:hover {
   background-color: #e53935;
 }
+
 
 

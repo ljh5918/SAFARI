@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Products from '../MyPage/Products'
+import Products from '../MyPage/MyProducts'
 import SellerProduct from './SellerProduct';
 import { Link } from 'react-router-dom';
 import styles from '../../styles/seller/SellerProfile.module.css';

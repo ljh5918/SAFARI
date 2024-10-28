@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 import Signup from "./pages/auth/Signup";
 import Login from "./pages/auth/Login";
 import Sell from "./pages/sell/Sell";
-import Product from "./components/product/Product";
+import Product from "./components/product/MainProduct";
 import ProductDetail from "./components/product/ProductDetail";
 // import CategoryPage from "./pages/ProductPage/CategoryPage";
 import Footer from "./components/footer/Footer";
@@ -76,15 +76,3 @@ export default App;
 
 
 
-// import React from 'react';
-// import TestChat from './pages/MyPage/chattest'; // Adjust the path accordingly
-
-// const App = () => {
-//   return (
-//     <div>
-//       <TestChat />
-//     </div>
-//   );
-// };
-
-// export default App;
